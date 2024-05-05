@@ -1,0 +1,23 @@
+<!--エラー表示部分-->
+<% if @room.errors.any? %>
+  <%= @room.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @room.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @room, url: admin_booking_path(@room.id), method: :patch do |f| %>
+  <h4>ホテル、部屋名</h4>
+  <%= f.text_field :room_name %>
+
+  <h4>部屋詳細</h4>
+  <%= f.text_field :room_datails %>
+
+   <h4>金額</h4>
+  <%= f.text_field :price %>
+
+  <%= f.submit '更新' %>
+<% end %>
+

@@ -1,0 +1,20 @@
+<h1>登録したホテル一覧</h1>
+
+<% @rooms.each do |room| %>
+  <p>ホテル、部屋名</p>
+  <%= room.room_name %>
+  <p>部屋詳細</p>
+  <%= room.room_datails %>
+  <p>金額</p>
+  <%= room.price %>
+  <p>画像</p>
+  <% if room.image.attached? %>
+    <%= image_tag room.image, size: "100x100" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+  <% end %>
+  <span>
+  <%= link_to '詳細', admin_booking_path(room.id) %>
+  </span>
+
+<% end %>

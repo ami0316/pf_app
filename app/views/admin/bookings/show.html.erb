@@ -1,0 +1,23 @@
+<p>ホテル、部屋名</p>
+<span><%= @room.room_name %></span>
+
+<p>部屋詳細</p>
+<span><%= @room.room_datails %></span>
+
+<p>金額</p>
+<span><%= @room.price %></span>
+
+<h2>画像</h2>
+<% if @room.image.attached? %>
+  <%= image_tag @room.image, size: "200x200" %>
+<% else %>
+  <%= image_tag 'no_image', size: "200x200" %>
+<% end %>
+
+<!--機能・削除機能へのユーザー制限-->
+<%# if customer_signed_in? && current_customer.id == @booking.customer_id %>
+
+<%= link_to "編集", edit_admin_booking_path(@room.id) %>
+<%= link_to "削除", admin_booking_path(@room.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<%# end %>
+

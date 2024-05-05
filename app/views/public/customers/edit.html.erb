@@ -1,0 +1,12 @@
+<h1>会員編集ページ</h1>
+  <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+
+<h3>メールアドレス</h3>
+ <%= f.text_field :email %>
+
+  <%= f.submit '更新' %>
+<% end %>
+
+
+
+<%= link_to "退会する",customer_path(current_customer.id), method: :delete, "data-confirm" => "本当に退会しますか？" %>
