@@ -1,11 +1,7 @@
-<p>ホテル、部屋名</p>
-<span><%= @room.room_name %></span>
-
-<p>部屋詳細</p>
-<span><%= @room.room_datails %></span>
-
-<p>金額</p>
-<span><%= @room.price %></span>
+<p>ホテル名：<span><%= @room.hotel.hotel_name %></span></p>
+<p>部屋名：<span><%= @room.room_name %></span></p>
+<p>部屋詳細：<span><%= @room.room_details %></span></p>
+<p>金額：<span><%= @room.price %></span></p>
 
 <h2>画像</h2>
 <% if @room.image.attached? %>

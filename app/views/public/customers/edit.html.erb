@@ -1,12 +1,33 @@
-<h1>会員編集ページ</h1>
-  <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+<!--エラー表示部分-->
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-<h3>メールアドレス</h3>
- <%= f.text_field :email %>
+<h1>会員編集ページ</h1>
+<%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+
+<p>名前（性）</p>
+<%= f.text_field :first_name %>
+
+<p>名前（名）</p>
+<%= f.text_field :last_name %>
+
+<p>フリガナ（セイ）</p>
+<%= f.text_field :first_name_kana %>
+
+<p>フリガナ（メイ）</p>
+ <%= f.text_field :last_name_kana %>
+
+<p>メールアドレス</p>
+ <%= f.text_field :email %><br>
 
   <%= f.submit '更新' %>
 <% end %>
 
 
 
-<%= link_to "退会する",customer_path(current_customer.id), method: :delete, "data-confirm" => "本当に退会しますか？" %>

@@ -12,11 +12,14 @@
 
 <!-- 投稿部分 -->
 <%= form_with model: @room, url: admin_bookings_path do |f| %>
-  <h4>ホテル、部屋名</h4>
+  <h4>ホテル名</h4>
+  <%= f.collection_select :hotel_id, Hotel.all, :id, :hotel_name, include_blank: "選択して下さい" %>
+
+  <h4>部屋名</h4>
   <%= f.text_field :room_name %>
 
   <h4>部屋詳細</h4>
-  <%= f.text_field :room_datails %>
+  <%= f.text_field :room_details %>
 
    <h4>金額</h4>
   <%= f.text_field :price %>
@@ -24,5 +27,5 @@
   <h4>画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
 
-  <%= f.submit '投稿' %>
+  <%= f.submit '投稿', class: "btn btn-success" %>
 <% end %>

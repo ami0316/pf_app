@@ -1,2 +1,18 @@
 // bootstrap追加記述
 @use '~bootstrap/scss/bootstrap';
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

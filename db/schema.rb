@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_04_130129) do
+ActiveRecord::Schema.define(version: 2024_05_06_110826) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,14 +57,17 @@ ActiveRecord::Schema.define(version: 2024_05_04_130129) do
     t.time "time", null: false
     t.integer "number_of_people", null: false
     t.boolean "booking_status", default: false, null: false
-    t.integer "admin_id"
+    t.integer "admin_id", null: false
+    t.integer "room_id", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "comments", force: :cascade do |t|
     t.string "comment", null: false
-    t.integer "customer_id"
+    t.integer "customer_id", null: false
+    t.integer "hotel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -96,11 +99,13 @@ ActiveRecord::Schema.define(version: 2024_05_04_130129) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "room_name", null: false
-    t.text "room_datails", null: false
+    t.text "room_details", null: false
     t.integer "price", null: false
     t.boolean "availability", default: true, null: false
+    t.integer "hotel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "admin_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

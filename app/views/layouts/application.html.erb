@@ -10,12 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<body class="d-flex flex-column">
-  <header style="background-color: #800000;">
+  <header style="background-color: #C0C0C0;">
     <nav class="navbar navbar-expand-md">
       <div class="container">
           <%= link_to "cancel matching", root_path, class: "navbar-brand p-3 text-white" %>
-          <i class="fa-solid fa-cake-candles fa-2x" style="color:white;"></i>
+          <i class="fa-solid fa-magnifying-glass" style="color:white;"></i>
+
 
 
         <div class ="collapse navbar-collapse">
@@ -52,13 +52,39 @@
       </div>
     </nav>
   </header>
-
-
-  <body>
-  <%# deivseのフラッシュメッセージを表示 %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-    <%= yield %>
-  </body>
+  <div class="wrap">
+    <div class="container">
+      <body class="d-flex flex-column">
+        <%# deivseのフラッシュメッセージを表示 %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </body>
+    </div>
+    <footer class="mt-auto" style="background-color: #C0C0C0;">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-4" style="display: table;width: 100%;">
+            <p style="display: table-cell;vertical-align: middle;text-align: center;">cancle matching</p>
+          </div>
+          <div class="col-md-4" style="display: table;width: 100%;">
+            <div style="display: table-cell;vertical-align: middle;text-align: center;">@ 2024 AmiImamura</div>
+          </div>
+          <div class="col-md-4" style="display: table;width: 100%;">
+          <ul class="p-0 list-unstyled" style="display: table-cell;vertical-align: middle;text-align: center;">
+            <li>
+              <div class="text-50">会社概要</div>
+            </li>
+            <li>
+              <div class="text-50">利用規約</div>
+            </li>
+            <li>
+              <div class="text-50">プライバシーポリシー</div>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    </footer>
+  </div>
 </html>

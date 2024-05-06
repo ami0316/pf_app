@@ -10,16 +10,20 @@ class Public::CustomersController < ApplicationController
   end
 
   def show
+     @customer = current_customer
   end
 
   def mypage
-    @customer = current_customer
+     @customer = current_customer
   end
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
-    redirect_to customers_mypage_path
+    if @customer.update(customer_params)
+      redirect_to  customer_path(@customer.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -32,6 +36,6 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:email)
+    params.require(:customer).permit(:email, :first_name, :last_name, :first_name_kana, :last_name_kana)
   end
 end

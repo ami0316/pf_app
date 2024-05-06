@@ -9,11 +9,14 @@
 <% end %>
 
 <%= form_with model: @room, url: admin_booking_path(@room.id), method: :patch do |f| %>
-  <h4>ホテル、部屋名</h4>
+  <h4>ホテル名</h4>
+  <%= f.collection_select :hotel_id, Hotel.all, :id, :hotel_name, include_blank: "選択して下さい" %>
+
+  <h4>部屋名</h4>
   <%= f.text_field :room_name %>
 
   <h4>部屋詳細</h4>
-  <%= f.text_field :room_datails %>
+  <%= f.text_field :room_details %>
 
    <h4>金額</h4>
   <%= f.text_field :price %>
