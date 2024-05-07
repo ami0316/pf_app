@@ -52,7 +52,7 @@ class Admin::BookingsController < ApplicationController
     room = Room.find_by(id: params[:id])
      if room.nil?
     redirect_to admin_bookings_path, notice: "該当の投稿が存在しません"
-     elsif room.admin_id.present? && current_admin.id != room.admin_id
+     elsif room.admin_id.present? && current_admin&.id != room.admin_id
     redirect_to admin_bookings_path, notice: "他の管理者の編集はできません"
      end
   end
