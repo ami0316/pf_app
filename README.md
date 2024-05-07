@@ -30,5 +30,5 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-
-後ほど記述予定
+- フリーイラスト素材として以下を使用
+  - [Pexels](https://www.pexels.com/ja-jp/)
