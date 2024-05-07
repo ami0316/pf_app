@@ -1,6 +1,7 @@
 <h1>詳細ページ</h1>
 
-<h3>メールアドレス</h3>
-<%= @customer.email %>
-
-<%= link_to "退会する",customer_path(current_customer.id), method: :delete, "data-confirm" => "本当に退会しますか？" %>
+<p>名前（性）：<span><%= @customer.first_name %></span></p>
+<p>名前（名）：<span><%= @customer.last_name %></span></p>
+<p>フリガナ（セイ）：<span><%= @customer.first_name_kana %></span></p>
+<p>フリガナ（メイ）：<span><%= @customer.last_name_kana %></span></p>
+<p>メールアドレス：<span><%= @customer.email %></span></p>

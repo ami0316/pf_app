@@ -17,7 +17,6 @@ class Customer < ApplicationRecord
   GUEST_CUSTOMER_EMAIL = "guest@example.com"
 
   def self.guest
-    #byebug
     find_or_create_by!(email: GUEST_CUSTOMER_EMAIL, first_name: "test", last_name: "test", first_name_kana: "テスト", last_name_kana: "テスト") do |customer|
       customer.password = SecureRandom.urlsafe_base64
     end

@@ -24,10 +24,13 @@
  <%= f.text_field :last_name_kana %>
 
 <p>メールアドレス</p>
- <%= f.text_field :email %><br>
+ <%= f.text_field :email %><br><br>
 
-  <%= f.submit '更新' %>
+  <%= f.submit '更新', class: "btn btn-success" %>
 <% end %>
+
+<%= link_to "退会する", customer_path(current_customer.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
+
 
 
 

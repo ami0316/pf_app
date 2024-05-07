@@ -11,7 +11,7 @@ class Admin::BookingsController < ApplicationController
     @room = Room.new(room_params)
     @room.admin_id = current_admin.id
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    if @room.save!
+    if @room.save
       redirect_to admin_booking_path(@room.id)
     else
       render :new
@@ -50,12 +50,11 @@ class Admin::BookingsController < ApplicationController
 
   def authenticate_admin_customer
     room = Room.find_by(id: params[:id])
-    if room.try(:admin_id).blank?
-      redirect_to admin_bookings_path, notice: "該当の投稿が存在しません"
-    end
-    if room.try(:admin_id) && current_admin.id != room.try(:admin_id)
-      redirect_to admin_bookings_path, notice: "他の管理者の編集はできません。"
-    end
+     if room.nil?
+    redirect_to admin_bookings_path, notice: "該当の投稿が存在しません"
+     elsif room.admin_id.present? && current_admin.id != room.admin_id
+    redirect_to admin_bookings_path, notice: "他の管理者の編集はできません"
+     end
   end
 
   # ストロングパラメータ
