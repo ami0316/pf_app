@@ -57,7 +57,7 @@ class Admin::BookingsController < ApplicationController
      end
   end
 
-  # ストロングパラメータ
+  # ストロングパラメーター
   def room_params
     params.require(:room).permit(:room_name, :room_details, :price, :image, :hotel_id, :admin_id)
   end
