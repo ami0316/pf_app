@@ -1,0 +1,47 @@
+<p>検索結果</p>
+<% if @hotels.present? %>
+  <table class="table table-hover table-inverse">
+
+      <tbody>
+        <% @hotels.each do |hotel| %>
+          <tr>
+            <p>ホテル名：<span><%= hotel.hotel_name %></span></p>
+             <% hotel.rooms.each do |room| %>
+              <p>部屋名：<span><%= room.room_name %></span></p>
+              <p>部屋詳細：<span><%= room.room_details %></span></p>
+              <p>金額：<span><%= room.price %></span></p>
+              <p>お部屋のイメージ</p>
+              <% if room.image.attached? %>
+                <%= image_tag room.image, size: "200x200" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+
+  </table>
+<% end %>
+<% if @rooms.present? %>
+  <table class="table table-hover table-inverse">
+
+      <tbody>
+        <% @rooms.each do |room| %>
+          <tr>
+            <p>ホテル名：<span><%= room.hotel.hotel_name %></span></p>
+            <p>部屋名：<span><%= room.room_name %></span></p>
+            <p>部屋詳細：<span><%= room.room_details %></span></p>
+            <p>金額：<span><%= room.price %></span></p>
+            <p>お部屋のイメージ</p>
+            <% if room.image.attached? %>
+              <%= image_tag room.image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+
+  </table>
+<% end %>

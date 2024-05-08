@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 #　管理者側のルーティング
   namespace :admin do
     resources :bookings
+    resources :customers
+    get 'customers/unsubscribe'
   end
 
 # 顧客用
@@ -24,7 +26,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'homes/about' => 'homes#about'
     get 'sessions/new' => 'sessions#new'
     get 'customers/mypage' => 'customers#mypage'
+    get 'search' => 'searches#search'
     resources :customers
+    resources :hotels
   end
 
 # ゲストログイン

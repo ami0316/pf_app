@@ -1,0 +1,7 @@
+<h4><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h4>
+
+<p>会員ID：<span><%= @customer.id %></span></p>
+<p>氏名：<span><%= @customer.first_name %><%= @customer.last_name %></span></p>
+<p>メールアドレス：<span><%= @customer.email %></span></p>
+
+<%= link_to "退会処理", admin_customer_path(@customer.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に退会させますか？" %>

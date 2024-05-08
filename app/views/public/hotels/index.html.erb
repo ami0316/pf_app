@@ -1,8 +1,11 @@
-<h1>登録したホテル一覧</h1>
+<%= render 'public/searches/search' %>
+<h1>予約可能なホテル一覧</h1>
 
 <% @rooms.each do |room| %>
-  <p>ホテル、部屋名</p>
+  <p>ホテル名</p>
   <%= room.hotel.hotel_name %>
+  <p>部屋名</p>
+  <%= room.room_name %>
   <p>部屋詳細</p>
   <%= room.room_details %>
   <p>金額</p>
@@ -14,7 +17,7 @@
     <%= image_tag 'no_image', size: "100x100" %>
   <% end %>
   <span>
-  <%= link_to '詳細', admin_booking_path(room.id) %>
+  <%= link_to "予約する", class: "btn btn-success" %>
   </span>
+  <% end %>
 
-<% end %>
