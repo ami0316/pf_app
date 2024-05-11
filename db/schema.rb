@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2024_05_08_045436) do
     t.time "time", null: false
     t.integer "number_of_people", null: false
     t.boolean "booking_status", default: false, null: false
-    t.integer "admin_id", null: false
     t.integer "room_id", null: false
     t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -104,6 +103,7 @@ ActiveRecord::Schema.define(version: 2024_05_08_045436) do
     t.integer "price", null: false
     t.boolean "availability", default: true, null: false
     t.integer "hotel_id", null: false
+    t.date "booking_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "admin_id"
