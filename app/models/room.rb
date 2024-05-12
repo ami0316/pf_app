@@ -9,5 +9,16 @@ class Room < ApplicationRecord
   validates :room_name, presence: true
   validates :room_details, presence: true
   validates :price, presence: true
+  
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      rooms = Room.where("room_name LIKE?", "#{word}")
+    elsif search == "partial_match"
+      rooms = Room.where("room_name LIKE?","%#{word}%")
+    else
+      rooms = Room.all
+    end
+  end
 
 end

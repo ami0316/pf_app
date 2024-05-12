@@ -2,7 +2,7 @@
 
 <% @rooms.each do |room| %>
   <p>ホテル、部屋名</p>
-  <%= room.room_name %>
+  <%= room.hotel.hotel_name %>
   <p>部屋詳細</p>
   <%= room.room_details %>
   <p>金額</p>

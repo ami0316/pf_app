@@ -1,0 +1,43 @@
+<h1>宿泊施設の詳細</h1>
+
+<table class = "table">
+  <tr>
+    <td>ホテル名：<%= @room.hotel.hotel_name %></td>
+    <td>部屋名：<%= @room.room_name %></td>
+    <td>空室日：<%= @room.booking_date %></td>
+    <td>部屋詳細：<%= @room.room_details %></td>
+    <td>金額：<%= @room.price %></td>
+    <!--<td>お部屋のイメージ-->
+    <td><% if @room.image.attached? %>
+     <%= image_tag @room.image, size: "100x100" %>
+    <% else %>
+     <%= image_tag 'no_image', size: "100x100" %>
+    <% end %>
+    </td>
+  </tr>
+</table>
+
+
+<div>
+  <%= form_with model: [@hotel, @comment], url: hotel_comments_path(@hotel)  do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "入力する", class: "btn btn-success" %>
+  <% end %>
+</div>
+
+<% if @comment.customer == current_customer %>
+  <%= link_to "削除", hotel_comment_path(@hotel.id), method: :delete, "deta-confirm" => "本当に削除しますか？" %>
+<% end %>
+
+<!--投稿に対するコメント一覧を表示-->
+<%# @comments.each do |comment| %>
+  <%#= comment.comment %>
+<%# end %>
+
+<div>
+  <p>コメント件数：<%= @hotel.comments.count %></p>
+  <% @hotel.comments.each do |comment| %>
+    <p><%= comment.customer.first_name %></p>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+  <% end %>
+</div>

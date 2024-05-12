@@ -11,6 +11,7 @@ class Admin::BookingsController < ApplicationController
     @room = Room.new(room_params)
     @room.admin_id = current_admin.id
     # 3. データをデータベースに保存するためのsaveメソッド実行
+    #byebug
     if @room.save
       redirect_to admin_booking_path(@room.id)
     else
@@ -59,6 +60,6 @@ class Admin::BookingsController < ApplicationController
 
   # ストロングパラメーター
   def room_params
-    params.require(:room).permit(:room_name, :room_details, :price, :image, :hotel_id, :admin_id)
+    params.require(:room).permit(:room_name, :room_details, :price, :image, :hotel_id, :admin_id, :booking_date)
   end
 end
