@@ -37,7 +37,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 # コメント機能のネスト部分
     resources :hotels do
      resources :comments, only: [:create, :destroy]
-  end
+    end
   end
 
     resources :rooms do

@@ -7,8 +7,8 @@
     <td>空室日：<%= @room.booking_date %></td>
     <td>部屋詳細：<%= @room.room_details %></td>
     <td>金額：<%= @room.price %></td>
-    <td>お部屋のイメージ
-    <% if @room.image.attached? %>
+    <!--<td>お部屋のイメージ-->
+    <td><% if @room.image.attached? %>
      <%= image_tag @room.image, size: "100x100" %>
     <% else %>
      <%= image_tag 'no_image', size: "100x100" %>
@@ -37,7 +37,7 @@
 <div>
   <p>コメント件数：<%= @hotel.comments.count %></p>
   <% @hotel.comments.each do |comment| %>
-    <%= comment.customer.first_name %>
+    <p><%= comment.customer.first_name %></p>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
   <% end %>
 </div>

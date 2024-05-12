@@ -14,7 +14,6 @@
 <p>宿泊人数：<%= @number_of_people %></p>
 <p>合計支払金額：<%= @room.price * @number_of_people.to_i %></p>
 
-<%#= link_to "予約を確定する",  bookings_thanks_path, class: "btn btn-success" %>
 <%= form_with model: @booking, url: bookings_path do |f| %>
 <%= f.hidden_field :booking_date, value: @room.booking_date %>
 <%= f.hidden_field :time, value: @time %>
