@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header style="background-color: #C0C0C0;">
+    <header style="background-color: #C0C0C0;"> 
       <nav class="navbar navbar-expand-md">
         <div class="container">
           <%= link_to "cancel matching", root_path, class: "navbar-brand p-3 text-white" %>
@@ -19,25 +19,25 @@
             <ul class = "navbar-nav ml-auto">
               <% if customer_signed_in? %>
                  <!--<p class="text-light pr-5">ようこそ<%#= current_customer.last_name %>さん</p>-->
-  
+
                   <li><%= link_to 'マイページ',customers_mypage_path, class: "btn btn-outline-light" %></li>
                   <li><%= link_to 'About', homes_about_path, class: "btn btn-outline-light" %></li>
                   <li><%= link_to 'ホテル一覧', hotels_path, class: "btn btn-outline-light" %></li>
                   <li><%= link_to 'ログアウト',  destroy_customer_session_path, method: :delete, class: "btn btn-outline-light" %></li>
-  
+
               <% elsif admin_signed_in? %>
-                  <%= link_to '新規投稿',  new_admin_booking_path, class: "btn btn-outline-light" %>
-                  <%= link_to '投稿一覧', admin_bookings_path, class: "btn btn-outline-light" %>
-                  <%= link_to '会員一覧', admin_customers_path, class: "btn btn-outline-light" %>
+                  <li><%= link_to '新規投稿',  new_admin_booking_path, class: "btn btn-outline-light" %></li>
+                  <li><%= link_to '投稿一覧', admin_bookings_path, class: "btn btn-outline-light" %></li>
+                  <li><%= link_to '会員一覧', admin_customers_path, class: "btn btn-outline-light" %></li>
                   <%#= link_to 'ジャンル一覧', class: "btn btn-outline-light" %>
-                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" %>
-  
+                  <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" %></li>
+
               <% else %>
-                  <%= link_to "ゲストログイン", customers_guest_sign_in_path, class: "btn btn-outline-light", method: :post %>
-                  <%= link_to 'About', homes_about_path, class: "btn btn-outline-light" %>
-                  <%= link_to '新規登録',   new_customer_registration_path,class: "btn btn-outline-light" %>
-                  <%= link_to 'ログイン', new_customer_session_path,class: "btn btn-outline-light" %>
-                  <%= link_to 'ホテル側ログイン', new_admin_session_path, class: "btn btn-outline-light" %>
+                  <li><%= link_to "ゲストログイン", customers_guest_sign_in_path, class: "btn btn-outline-light", method: :post %></li>
+                  <li><%= link_to 'About', homes_about_path, class: "btn btn-outline-light" %></li>
+                  <li><%= link_to '新規登録',   new_customer_registration_path,class: "btn btn-outline-light" %></li>
+                  <li><%= link_to 'ログイン', new_customer_session_path,class: "btn btn-outline-light" %></li>
+                  <li><%= link_to 'ホテル側ログイン', new_admin_session_path, class: "btn btn-outline-light" %></li>
               <% end %>
             </ul>
           </div>
@@ -51,7 +51,7 @@
           <%# deivseのフラッシュメッセージを表示 %>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
-          
+
           <!--<div class="row">-->
         <%= yield %>
           <!--</div>-->

@@ -1,7 +1,6 @@
 class Public::HotelsController < ApplicationController
   def index
     @rooms = Room.all
-    #@booking_date = params[:booking_date]
   end
 
   def show
