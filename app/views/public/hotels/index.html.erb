@@ -1,25 +1,24 @@
-<div class = "container">
-  <div class = "row">
 <%= render 'public/searches/search' %>
+
 <h1>ホテル・旅館・宿泊施設</h1>
 
 <% @rooms.each do |room| %>
-<table class = "table table-striped">
-  <tr>
-    <td>ホテル名：<%= room.hotel.hotel_name %></td>
-    <td>部屋名：<%= room.room_name %></td>
-    <td>空室日：<%= room.booking_date %></td>
-    <td>金額：<%= room.price %></td>
-    <!--<td>お部屋のイメージ-->
-    <td><% if room.image.attached? %>
-     <%= image_tag room.image, size: "100x100" %>
-    <% else %>
-     <%= image_tag 'no_image', size: "100x100" %>
-    <% end %></td>
-    <td><%= link_to "詳細", hotel_path(room.hotel.id), class: "btn btn-success" %> </td>
-    <td><%= link_to "予約する", new_booking_path(room_id: room.id), class: "btn btn-info" %></td>
-  </tr>
-</table>
-</div>
-</div>
+  <table class = "table table-striped">
+    <tr>
+      <td>ホテル名：<%= room.hotel.hotel_name %></td>
+      <td>部屋名：<%= room.room_name %></td>
+      <td>空室日：<%= room.booking_date %></td>
+      <td>金額：<%= room.price %></td>
+      <!--<td>お部屋のイメージ-->
+      <td>
+        <% if room.image.attached? %>
+          <%= image_tag room.image, size: "100x100" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+        <% end %>
+      </td>
+      <td><%= link_to "詳細", hotel_path(room.hotel.id), class: "btn btn-success" %> </td>
+      <td><%= link_to "予約する", new_booking_path(room_id: room.id), class: "btn btn-info" %></td>
+    </tr>
+  </table>
 <% end %>
