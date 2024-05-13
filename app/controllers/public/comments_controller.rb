@@ -10,13 +10,13 @@ class Public::CommentsController < ApplicationController
     comment = current_customer.comments.new(comment_params)
     comment.hotel_id = hotel.id # ホテルIDを指定する必要がある場合
     comment.save
-    redirect_to hotels_path
+    redirect_to request.referer
   end
 
   def destroy
-    Comment.find(params[:id])
+    comment = Comment.find(params[:id])
     comment.destroy
-    redirect_to hotels_path
+    redirect_to request.referer
   end
 
 

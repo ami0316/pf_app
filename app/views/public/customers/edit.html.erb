@@ -1,4 +1,7 @@
-<!--エラー表示部分-->
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-12 col-md-12 col-lg-10'>
+      <!--エラー表示部分-->
 <% if @customer.errors.any? %>
   <%= @customer.errors.count %>件のエラーが発生しました
   <ul>
@@ -12,25 +15,27 @@
 <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
 
 <p>名前（性）</p>
-<%= f.text_field :first_name %>
+<%= f.text_field :first_name, class: "form-control" %>
 
 <p>名前（名）</p>
-<%= f.text_field :last_name %>
+<%= f.text_field :last_name, class: "form-control" %>
 
 <p>フリガナ（セイ）</p>
-<%= f.text_field :first_name_kana %>
+<%= f.text_field :first_name_kana, class: "form-control" %>
 
 <p>フリガナ（メイ）</p>
- <%= f.text_field :last_name_kana %>
+ <%= f.text_field :last_name_kana, class: "form-control" %>
 
 <p>メールアドレス</p>
- <%= f.text_field :email %><br><br>
+ <%= f.text_field :emai, class: "form-control" %><br><br>
 
   <%= f.submit '更新', class: "btn btn-success" %>
 <% end %>
 
 <%= link_to "退会する", customer_path(current_customer.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
-
+    </div>
+  </div>
+</div>
 
 
 

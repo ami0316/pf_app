@@ -10,12 +10,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header style="background-color: #C0C0C0;"> 
+    <header style="background-color: #C0C0C0;">
       <nav class="navbar navbar-expand-md">
         <div class="container">
           <%= link_to "cancel matching", root_path, class: "navbar-brand p-3 text-white" %>
           <i class="fa-solid fa-magnifying-glass" style="color:white;"></i>
-          <div class ="collapse navbar-collapse">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border-color:white;">
+            <span class="navbar-toggler-icon" style="border-color:white;"></span>
+          </button>
+
+          <div class ="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class = "navbar-nav ml-auto">
               <% if customer_signed_in? %>
                  <!--<p class="text-light pr-5">ようこそ<%#= current_customer.last_name %>さん</p>-->
@@ -37,7 +41,7 @@
                   <li><%= link_to 'About', homes_about_path, class: "btn btn-outline-light" %></li>
                   <li><%= link_to '新規登録',   new_customer_registration_path,class: "btn btn-outline-light" %></li>
                   <li><%= link_to 'ログイン', new_customer_session_path,class: "btn btn-outline-light" %></li>
-                  <li><%= link_to 'ホテル側ログイン', new_admin_session_path, class: "btn btn-outline-light" %></li>
+                  <li><%= link_to '宿泊施設側ログイン', new_admin_session_path, class: "btn btn-outline-light" %></li>
               <% end %>
             </ul>
           </div>
@@ -84,4 +88,7 @@
       </footer>
     </div>
   </body>
+  <style>
+
+  </style>
 </html>

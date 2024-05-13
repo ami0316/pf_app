@@ -1,43 +1,111 @@
 <h1>宿泊施設の詳細</h1>
 
-<table class = "table">
-  <tr>
-    <td>ホテル名：<%= @room.hotel.hotel_name %></td>
-    <td>部屋名：<%= @room.room_name %></td>
-    <td>空室日：<%= @room.booking_date %></td>
-    <td>部屋詳細：<%= @room.room_details %></td>
-    <td>金額：<%= @room.price %></td>
-    <!--<td>お部屋のイメージ-->
-    <td><% if @room.image.attached? %>
-     <%= image_tag @room.image, size: "100x100" %>
-    <% else %>
-     <%= image_tag 'no_image', size: "100x100" %>
-    <% end %>
-    </td>
-  </tr>
-</table>
-
-
-<div>
-  <%= form_with model: [@hotel, @comment], url: hotel_comments_path(@hotel)  do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "入力する", class: "btn btn-success" %>
-  <% end %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="mb-3">
+      <% if @room.image.attached? %>
+        <%= image_tag @room.image, style: "width:100%;" %>
+      <% else %>
+        <%= image_tag 'no_image', style: "width:100%;" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <table class="table table-responsive d-none d-md-block">
+      <tbody>
+        <tr>
+          <th width=250>ホテル名</th>
+          <td width=550><%= @room.hotel.hotel_name %></td>
+        <tr>
+        <tr>
+          <th>部屋名</th>
+          <td><%= @room.room_name %></td>
+        <tr>
+          <th>空室日</th>
+          <td><%= @room.booking_date %></td>
+        </tr>
+        <tr>
+          <th>部屋詳細</th>
+          <td><%= @room.room_details %></td>
+        </tr>
+        <tr>
+          <th>金額</th>
+          <td><%= @room.price %></td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-responsive d-block d-md-none">
+      <tbody>
+        <tr>
+          <td width="600">
+            <div class="h5">ホテル名:</div>
+            <div><%= @room.hotel.hotel_name %></div>
+          </td>
+        <tr>
+        <tr>
+          <td>
+            <div class="h5">部屋名:</div>
+            <div><%= @room.room_name %></div>
+          </td>
+        <tr>
+          <td>
+            <div class="h5">空室日:</div>
+            <div><%= @room.booking_date %></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="h5">部屋詳細:</div>
+            <div><%= @room.room_details %></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="h5">金額:</div>
+            <div><%= @room.price %></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<% if @comment.customer == current_customer %>
-  <%= link_to "削除", hotel_comment_path(@hotel.id), method: :delete, "deta-confirm" => "本当に削除しますか？" %>
-<% end %>
+<div class="border-bottom mt-2 mb-5 d-none d-md-block"></div>
 
-<!--投稿に対するコメント一覧を表示-->
-<%# @comments.each do |comment| %>
-  <%#= comment.comment %>
-<%# end %>
-
-<div>
-  <p>コメント件数：<%= @hotel.comments.count %></p>
-  <% @hotel.comments.each do |comment| %>
-    <p><%= comment.customer.first_name %></p>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-  <% end %>
+<div class="row">
+  <div class="col-md-4">
+    <h4>コメントを残す</h4>
+    <div class="mb-4">
+      <%= form_with model: [@hotel, @comment], url: hotel_comments_path(@hotel)  do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control mb-2" %>
+        <%= f.submit "入力する", class: "btn btn-success btn-block" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="d-flex justify-content-between">
+      <h4>コメント一覧</h4>
+      <p>コメント件数：<%= @hotel.comments.count %></p>
+    </div>
+    <div class="mb-4">
+      <% @comments.each do |comment| %>
+        <div class="card mb-2">
+          <div class="card-body">
+            <div>
+              <%= simple_format(comment.comment) %>
+            </div>
+            <div class="d-flex justify-content-end mb-2">
+              <span class="mr-4"><%= comment.customer.first_name %></span>
+              <span><%= l(comment.created_at, format: :long) %></span>
+            </div>
+            <% if comment.customer == current_customer %>
+              <div class="d-flex justify-content-end">
+                <%= link_to "削除", hotel_comment_path(@hotel, comment), method: :delete, class: "btn btn-danger ml-auto", "deta-confirm" => "本当に削除しますか？" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -7,7 +7,7 @@ class Public::HotelsController < ApplicationController
     @room = Room.find(params[:id])
     @comment = Comment.new
     @hotel = Hotel.find(params[:id])
-    @comments = @hotel.comments
+    @comments = @hotel.comments.order(created_at: :desc)
   end
 
 end

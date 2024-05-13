@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 offset-sm-5 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+
 <h4><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h4>
 
 <p>会員ID：<span><%= @customer.id %></span></p>
@@ -5,3 +9,7 @@
 <p>メールアドレス：<span><%= @customer.email %></span></p>
 
 <%= link_to "退会処理", admin_customer_path(@customer.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に退会させますか？" %>
+
+    </div>
+  </div>
+</div>

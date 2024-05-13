@@ -1,3 +1,6 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 offset-sm-5 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
 <p>ホテル名：<span><%= @room.hotel.hotel_name %></span></p>
 <p>部屋名：<span><%= @room.room_name %></span></p>
 <p>部屋詳細：<span><%= @room.room_details %></span></p>
@@ -13,7 +16,9 @@
 <!--機能・削除機能へのユーザー制限-->
 <%# if customer_signed_in? && current_customer.id == @booking.customer_id %>
 
-<%= link_to "編集", edit_admin_booking_path(@room.id) %>
-<%= link_to "削除", admin_booking_path(@room.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<%= link_to "編集", edit_admin_booking_path(@room.id),class: "btn btn-success" %>
+<%= link_to "削除", admin_booking_path(@room.id),class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <%# end %>
-
+    </div>
+  </div>
+</div>
