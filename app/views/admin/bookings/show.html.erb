@@ -6,6 +6,7 @@
 <p>部屋詳細：<span><%= @room.room_details %></span></p>
 <p>金額：<span><%= @room.price %></span></p>
 
+
 <!--<h2>お部屋のイメージ</h2>-->
 <% if @room.image.attached? %>
   <%= image_tag @room.image, size: "200x200" %>

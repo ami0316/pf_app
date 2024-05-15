@@ -12,9 +12,12 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"; 
+import "../stylesheets/application";
 
+// 評価機能での追加記述
+import "jquery-raty-js";
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+

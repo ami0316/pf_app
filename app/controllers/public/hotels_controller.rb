@@ -1,6 +1,10 @@
 class Public::HotelsController < ApplicationController
   def index
-    @rooms = Room.all
+    if params[:hotel_id]
+      @rooms = Room.where(hotel_id: params[:hotel_id])
+    else
+      @rooms = Room.all
+    end
   end
 
   def show

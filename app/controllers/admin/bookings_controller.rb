@@ -9,9 +9,8 @@ class Admin::BookingsController < ApplicationController
   def create
     # １.&2. データを受け取り新規登録するためのインスタンス作成
     @room = Room.new(room_params)
-    @room.admin_id = current_admin.id
+    # @room.admin_id = current_admin.id
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    #byebug
     if @room.save
       redirect_to admin_booking_path(@room.id)
     else
@@ -29,6 +28,8 @@ class Admin::BookingsController < ApplicationController
 
   def edit
     @room = Room.find(params[:id])
+    @booking = Booking.find(params[:id])
+    @tags = @booking.tags.pluck(:name).join(',')
   end
 
   def update
@@ -39,12 +40,25 @@ class Admin::BookingsController < ApplicationController
     else
       render :edit
     end
+    @booking = Booking.find(params[:id])
+    #:bookingはbookingで投稿されてきた際にパラメーターとして飛ばされ、その中の[:tag_id]を取得して、splitで,区切りにしている
+    tags = params[:booking][:tag_id].split(',')
+    if @booking.update(booking_params)
+    #@bookingをつけることbookingモデルの情報を.save_tagsに引き渡してメソッドを走らせることができる
+    @booking.update_tags(tags)
+      redirect_to root_path, success: t('bookings.edit.edit_success')
+    else
+      render :edit
+    end
   end
 
   def destroy
     room = Room.find(params[:id])
     room.destroy
     redirect_to  new_admin_booking_path
+    booking = Booking.find(params[:id])
+    booking.destroy
+    redirect_to root_path, success: t('bookings.destroy.destroy_success')
   end
 
   private

@@ -19,6 +19,9 @@ class Public::BookingsController < ApplicationController
                               room_id: params[:room_id])
     redirect_to bookings_thanks_path
   end
+  
+  def update
+  end  
 
   def thanks
   end
@@ -26,8 +29,20 @@ class Public::BookingsController < ApplicationController
   def index
   end
 
+  
   def show
+    @booking = Booking.find(params[:id])
+    @comment = Comment.new
+    # コメント用のコード
+    @booking_comments = @booking.comments
+
+    # タグ用のコード
+    @tags = @booking.tags.pluck(:name).join(',')
+
+    # 閲覧数表示
+    impressionist(@booking, nil, :unique => ["session_hash"])
   end
+
 
   def edit
   end

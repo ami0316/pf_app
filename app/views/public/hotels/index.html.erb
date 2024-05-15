@@ -6,13 +6,22 @@
 
 <h1>ホテル・旅館・宿泊施設</h1>
 
+<% if params[:hotel_id] %>
+  <ul>
+    <li><%= @rooms.first.hotel.hotel_name %></li>
+    <li><%= @rooms.first.hotel.body %></li>
+    <li><%= @rooms.first.hotel.url %></li>
+    <li><%= @rooms.first.hotel.telephone_number %></li>
+  </ul>
+<% end %>
+
 <% @rooms.each do |room| %>
   <table class = "table table-striped">
     <tr>
-      <td>ホテル名：<%= room.hotel.hotel_name %></td>
+      <td>ホテル名：<%= link_to room.hotel.hotel_name, hotels_path(hotel_id: room.hotel) %></td>
       <td>部屋名：<%= room.room_name %></td>
       <td>空室日：<%= room.booking_date %></td>
-      <td>金額：<%= room.price %></td>
+      <td>金額：&yen; <%= room.price.to_s(:delimited) %></td>
       <!--<td>お部屋のイメージ-->
       <td>
         <% if room.image.attached? %>
@@ -21,7 +30,7 @@
           <%= image_tag 'no_image', size: "100x100" %>
         <% end %>
       </td>
-      <td><%= link_to "詳細", hotel_path(room.hotel.id), class: "btn btn-success" %> </td>
+      <td><%= link_to "詳細", hotel_path(room), class: "btn btn-success" %> </td>
       <td><%= link_to "予約する", new_booking_path(room_id: room.id), class: "btn btn-info" %></td>
     </tr>
   </table>

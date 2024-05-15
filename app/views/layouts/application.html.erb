@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/c3fd8eb30a.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--<link href="https://cdn.jsdelivr.net/npm/jquery-raty-js@2.8.0/lib/jquery.raty.min.css" rel="stylesheet">-->
   </head>
   <body>
     <header style="background-color: #C0C0C0;">
@@ -30,10 +31,12 @@
                   <li><%= link_to 'ログアウト',  destroy_customer_session_path, method: :delete, class: "btn btn-outline-light" %></li>
 
               <% elsif admin_signed_in? %>
-                  <li><%= link_to '新規投稿',  new_admin_booking_path, class: "btn btn-outline-light" %></li>
+                  <!--<li><#%= link_to '新規投稿',  new_admin_booking_path, class: "btn btn-outline-light" %></li>-->
                   <li><%= link_to '投稿一覧', admin_bookings_path, class: "btn btn-outline-light" %></li>
                   <li><%= link_to '会員一覧', admin_customers_path, class: "btn btn-outline-light" %></li>
-                  <%#= link_to 'ジャンル一覧', class: "btn btn-outline-light" %>
+                  <li><%= link_to 'レビュー一覧', admin_reviews_path, class: "btn btn-outline-light" %></li>
+                  <li><%= link_to '宿泊施設登録', new_admin_hotel_path, class: "btn btn-outline-light" %></li>
+                  <li><%= link_to '部屋登録', new_admin_room_path, class: "btn btn-outline-light" %></li>
                   <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" %></li>
 
               <% else %>
@@ -41,6 +44,7 @@
                   <li><%= link_to 'About', homes_about_path, class: "btn btn-outline-light" %></li>
                   <li><%= link_to '新規登録',   new_customer_registration_path,class: "btn btn-outline-light" %></li>
                   <li><%= link_to 'ログイン', new_customer_session_path,class: "btn btn-outline-light" %></li>
+                  <li><%= link_to '宿泊施設側新規登録',  new_admin_registration_path,class: "btn btn-outline-light" %></li>
                   <li><%= link_to '宿泊施設側ログイン', new_admin_session_path, class: "btn btn-outline-light" %></li>
               <% end %>
             </ul>
