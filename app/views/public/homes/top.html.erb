@@ -1,28 +1,91 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-sm-10 col-md-12 col-lg-12'>
-
-      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: First slide"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
-          </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Second slide"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+<div class="position-relative d-flex align-items-center">
+  <div class="position-absolute d-flex justify-content-center w-100 py-3"
+        style="backdrop-filter: brightness(150%) blur(20px);  z-index: 9999;">
+    <%= image_tag "logo.png", style: 'width: auto; height: 100px' %>
+  </div>
+  <div class="swiper main-visual">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+         <%= image_tag 'pexels-nilsr-20099316.jpg', class: 'img-fluid', style: 'height: 400px; width: 100%; object-fit: cover;' %>
       </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Third slide"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
-      </div>
-          </div>
-      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      <div class="swiper-slide">
+         <%= image_tag 'pexels-huuhuynh-17995062.jpg', class: 'img-fluid', style: 'height: 400px; width: 100%; object-fit: cover;' %>
       </div>
     </div>
   </div>
 </div>
+
+
+<div class="row no-gutters mt-5">
+  <div class="col-md-6">
+    <%= image_tag 'pexels-huuhuynh-17995062.jpg', class: 'img-fluid', style: 'width: 100%; height: 300px; object-fit: cover;' %>
+  </div>
+  <div class="col-md-6">
+    <div class="container-fluid h-100 d-flex flex-column justify-content-center">
+      <h2>cancel matchingとは</h2>
+      <p>
+        直近でキャンセルになってしまった施設側と予約を探しているお客様の両者がマッチングできるサイトです。
+        「キャンセル」という言葉をマイナスではなくマッチできる、というプラスの捉え方をもって頂きたくcancel matchingというサイト名にしました。
+        直近で空室のホテルを探している時、キャンセルになってしまったお部屋を他のお客様に宿泊してほしい時‥様々な用途でご利用していただけますと幸いです。
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h2>新着一覧</h2>
+
+
+  <div class="swiper new-rooms">
+    <div class="swiper-wrapper">
+
+      <% @rooms.each_slice(3) do |room_slice| %>
+      <div class="swiper-slide">
+        <div class="row no-gutters">
+        <% room_slice.each do |room| %>
+          <div class="col-md-4 p-2">
+            <%= link_to hotel_path(room) do %>
+            <div class="card">
+              <%= image_tag room.image, style: 'width: 100%; height: 150px; object-fit: cover;' if room.image.attached? %>
+              <%= image_tag 'no_image.jpg', style: 'width: 100%; height: 150px; object-fit: cover;' unless room.image.attached? %>
+              <div class="card-body">
+                <h5><%= room.hotel.hotel_name %></h5>
+                <p><%= room.room_name %></p>
+                <p>&yen; <%= room.price %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // Swiperを実行(初期化)
+  $(document).on('turbolinks:load', function() {
+      new Swiper('.main-visual', {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+        },
+      });
+  });
+
+    // Swiperを実行(初期化)
+  $(document).on('turbolinks:load', function() {
+      var newRooms = new Swiper('.new-rooms', {
+        loop: true,
+        speed: 30000,
+        autoplay: {
+          delay: 0,
+        },
+      });
+  });
+
+
+</script>

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 #　管理者側のルーティング
   namespace :admin do
     resources :bookings
-    resources :hotels do
-      resources :rooms, only: [:new, :create, :show]
+    resources :hotels do # Good ^_^
+      resources :rooms
     end
-    resources :rooms
+    resources :rooms # No Good T_T
     resources :customers, only: [:index, :show, :destroy]
     resources :reviews
     get 'customers/unsubscribe'

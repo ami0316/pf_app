@@ -17,11 +17,12 @@ class Public::BookingsController < ApplicationController
                               #price: params[:price],
                               customer_id: current_customer.id,
                               room_id: params[:room_id])
+    WelcomeMailer.send_when_signup(current_customer.email, current_customer.last_name).deliver
     redirect_to bookings_thanks_path
   end
-  
+
   def update
-  end  
+  end
 
   def thanks
   end
@@ -29,7 +30,7 @@ class Public::BookingsController < ApplicationController
   def index
   end
 
-  
+
   def show
     @booking = Booking.find(params[:id])
     @comment = Comment.new
