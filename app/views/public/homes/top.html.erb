@@ -1,38 +1,48 @@
 <div class="position-relative d-flex align-items-center">
-  <div class="position-absolute d-flex justify-content-center w-100 py-3"
-        style="backdrop-filter: brightness(150%) blur(20px);  z-index: 9999;">
+  <div class="position-absolute d-flex justify-content-center w-100 py-3 top-mv__filter">
     <%= image_tag "logo.png", style: 'width: auto; height: 100px' %>
   </div>
   <div class="swiper main-visual">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-         <%= image_tag 'pexels-nilsr-20099316.jpg', class: 'img-fluid', style: 'height: 400px; width: 100%; object-fit: cover;' %>
+        <%= image_tag 'oceanhotel.jpg', class: 'img-fluid top-mv__img' %>
       </div>
       <div class="swiper-slide">
-         <%= image_tag 'pexels-huuhuynh-17995062.jpg', class: 'img-fluid', style: 'height: 400px; width: 100%; object-fit: cover;' %>
+        <%= image_tag 'autumn.jpg', class: 'img-fluid top-mv__img' %>
+      </div>
+      <div class="swiper-slide">
+        <%= image_tag 'street.webp', class: 'img-fluid top-mv__img' %>
+       </div>
+      <div class="swiper-slide">
+        <%= image_tag 'snowhouse.jpg', class: 'img-fluid top-mv__img' %>
+      </div>
+       <div class="swiper-slide">
+        <%= image_tag 'purplesky.jpg', class: 'img-fluid top-mv__img' %>
       </div>
     </div>
   </div>
 </div>
 
 
-<div class="row no-gutters mt-5">
-  <div class="col-md-6">
-    <%= image_tag 'pexels-huuhuynh-17995062.jpg', class: 'img-fluid', style: 'width: 100%; height: 300px; object-fit: cover;' %>
-  </div>
-  <div class="col-md-6">
-    <div class="container-fluid h-100 d-flex flex-column justify-content-center">
-      <h2>cancel matchingとは</h2>
-      <p>
-        直近でキャンセルになってしまった施設側と予約を探しているお客様の両者がマッチングできるサイトです。
-        「キャンセル」という言葉をマイナスではなくマッチできる、というプラスの捉え方をもって頂きたくcancel matchingというサイト名にしました。
-        直近で空室のホテルを探している時、キャンセルになってしまったお部屋を他のお客様に宿泊してほしい時‥様々な用途でご利用していただけますと幸いです。
-      </p>
+<div class="container">
+  <div class="row no-gutters mt-5">
+    <div class="col-md-6">
+      <%= image_tag 'reception.jpg', class: 'img-fluid top-description__img' %>
+    </div>
+    <div class="col-md-6">
+      <div class="container-fluid h-100 d-flex flex-column justify-content-center">
+        <h2>cancel matchingとは</h2>
+        <p>
+          直近でキャンセルになってしまった施設側と予約を探しているお客様の両者がマッチングできるサイトです。<br>
+          「キャンセル」という言葉をマイナスではなくマッチできる、というプラスの捉え方をもって頂きたくcancel matchingというサイト名にしました。<br>
+          直近で空室のホテルを探している時、キャンセルになってしまったお部屋を他のお客様に宿泊してほしい時‥様々な用途でご利用していただけますと幸いです。
+        </p>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
   <h2>新着一覧</h2>
 
 
@@ -46,8 +56,8 @@
           <div class="col-md-4 p-2">
             <%= link_to hotel_path(room) do %>
             <div class="card">
-              <%= image_tag room.image, style: 'width: 100%; height: 150px; object-fit: cover;' if room.image.attached? %>
-              <%= image_tag 'no_image.jpg', style: 'width: 100%; height: 150px; object-fit: cover;' unless room.image.attached? %>
+              <%= image_tag room.image, class: 'top-new-room__img' if room.image.attached? %>
+              <%= image_tag 'redbed.jpg', class: 'top-new-room__img' unless room.image.attached? %>
               <div class="card-body">
                 <h5><%= room.hotel.hotel_name %></h5>
                 <p><%= room.room_name %></p>

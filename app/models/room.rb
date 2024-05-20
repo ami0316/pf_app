@@ -1,9 +1,9 @@
 class Room < ApplicationRecord
-  has_many :bookings, dependent: :destroy
+  # has_many :bookings, dependent: :destroy
   belongs_to :hotel
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships
-  
+
    # ActiveStorageの設定
   has_one_attached :image
 
@@ -11,7 +11,7 @@ class Room < ApplicationRecord
   validates :room_name, presence: true
   validates :room_details, presence: true
   validates :price, presence: true
-  
+
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
@@ -22,7 +22,7 @@ class Room < ApplicationRecord
       rooms = Room.all
     end
   end
-  
+
  # タグ付けの新規投稿用メソッド
   def save_tags(tags)
     tags.each do |new_tags|
@@ -52,7 +52,7 @@ class Room < ApplicationRecord
       #　　　　　　 b             a b c
       old_tags = current_tags - latest_tags
       #一致したものを取り出す
-      # a c       a b c            b 
+      # a c       a b c            b
       new_tags = latest_tags - current_tags
 
       # a  c

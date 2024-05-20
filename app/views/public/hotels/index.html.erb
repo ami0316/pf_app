@@ -15,13 +15,28 @@
   </ul>
 <% end %>
 
+<% if params[:tag_id] %>
+  <h2>
+    <%= Tag.find(params[:tag_id]).name %>に関するお部屋
+  </h2>
+<% end %>
+
 <% @rooms.each do |room| %>
+<%# @tags.each do |tag| %>
   <table class = "table table-striped">
     <tr>
       <td>ホテル名：<%= link_to room.hotel.hotel_name, hotels_path(hotel_id: room.hotel) %></td>
       <td>部屋名：<%= room.room_name %></td>
       <td>空室日：<%= room.booking_date %></td>
       <td>金額：&yen; <%= room.price.to_s(:delimited) %></td>
+      <td>
+        タグ：
+        <% room.tags.each do |tag| %>
+          <%= link_to hotels_path(tag_id: tag), class: 'text-decoration-none' do %>
+            <span class="badge badge-secondary mr-2"><%= tag.name %></span>
+          <% end %>
+        <% end %>
+      </td>
       <!--<td>お部屋のイメージ-->
       <td>
         <% if room.image.attached? %>
@@ -34,6 +49,7 @@
       <td><%= link_to "予約する", new_booking_path(room_id: room.id), class: "btn btn-info" %></td>
     </tr>
   </table>
+<%# end %>
 <% end %>
     </div>
   </div>

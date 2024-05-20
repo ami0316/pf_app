@@ -5,8 +5,9 @@ class WelcomeMailer < ApplicationMailer
   #
   #   en.welcome_mailer.send_when_signup.subject
   #
-  def send_when_signup(email, last_name)
+  def send_when_signup(email, last_name, booking)
     @last_name = last_name
+    @booking = booking
     mail to: email, subject: 'ご予約が確定しました'
   end
 end

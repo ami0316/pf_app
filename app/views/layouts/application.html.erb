@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PfApp</title>
+    <title>cancle matching</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,12 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--<link href="https://cdn.jsdelivr.net/npm/jquery-raty-js@2.8.0/lib/jquery.raty.min.css" rel="stylesheet">-->
   </head>
-  <body>
-    <header style="background-color: #FFF;">
-      <nav class="navbar navbar-expand-md">
+  <body class="d-flex flex-column min-vh-100">
+    <header class="position-fixed w-100" style="background-color: #fff;">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <%= link_to root_path, class: "navbar-brand" do %>
-            <%= image_tag "IMG_6641.png", alt: "Image", style: 'width: 100px; height: auto;' %>
+            <%= image_tag "IMG_6641.png", alt: "Image", class: 'logo' %>
           <% end %>
           <%#= link_to root_path, class: "navbar-brand p-3 text-white" do %>
           <%#= image_tag("IMG.6641.png", alt: "Image") %>
@@ -31,76 +31,95 @@
               <% if customer_signed_in? %>
                  <!--<p class="text-light pr-5">ようこそ<%#= current_customer.last_name %>さん</p>-->
 
-                  <li><%= link_to 'マイページ',customers_mypage_path, class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to 'About', homes_about_path, class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to 'ホテル一覧', hotels_path, class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to 'ログアウト',  destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary" %></li>
+                  <li class="nav-item"><%= link_to 'マイページ',customers_mypage_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to 'About', homes_about_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to 'ホテル一覧', hotels_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to 'ログアウト',  destroy_customer_session_path, method: :delete, class: "nav-link" %></li>
 
               <% elsif admin_signed_in? %>
                   <!--<li><#%= link_to '新規投稿',  new_admin_booking_path, class: "btn btn-outline-light" %></li>-->
-                  <li><%= link_to '投稿一覧', admin_bookings_path, class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to '会員一覧', admin_customers_path, class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to 'レビュー一覧', admin_reviews_path, class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to '宿泊施設登録', new_admin_hotel_path, class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to '部屋登録', new_admin_room_path, class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %></li>
+                  <li class="nav-item"><%= link_to '投稿一覧', admin_bookings_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to '会員一覧', admin_customers_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to 'レビュー一覧', admin_reviews_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to '宿泊施設登録', new_admin_hotel_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to '部屋登録', new_admin_room_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
 
               <% else %>
-                  <li><%= link_to "ゲストログイン", customers_guest_sign_in_path, class: "btn btn-outline-secondary", method: :post %></li>
-                  <li><%= link_to 'About', homes_about_path, class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to '新規登録',   new_customer_registration_path,class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to 'ログイン', new_customer_session_path,class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to '宿泊施設側新規登録',  new_admin_registration_path,class: "btn btn-outline-secondary" %></li>
-                  <li><%= link_to '宿泊施設側ログイン', new_admin_session_path, class: "btn btn-outline-secondary" %></li>
+                  <li class="nav-item"><%= link_to "ゲストログイン", customers_guest_sign_in_path, class: "nav-link", method: :post %></li>
+                  <li class="nav-item"><%= link_to 'About', homes_about_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to '新規登録',   new_customer_registration_path,class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path,class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to '宿泊施設側新規登録',  new_admin_registration_path,class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to '宿泊施設側ログイン', new_admin_session_path, class: "nav-link" %></li>
               <% end %>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-    <div class="wrap">
+    <!--<div class="wrap">-->
       <!--<div class="container">-->
         <!--<body class="d-flex flex-column">-->
         <!--<body>-->
           <%# deivseのフラッシュメッセージを表示 %>
           <% if notice %>
-            <p class="notice"><%= notice %></p>
+            <div class="container">
+              <p class="notice"><%= notice %></p>
+            </div>
           <% end %>
           <% if alert %>
-            <p class="alert"><%= alert %></p>
+            <div class="container">
+              <p class="alert"><%= alert %></p>
+            </div>
           <% end %>
 
           <!--<div class="row">-->
-        <%= yield %>
+        <main class="flex-grow-1">
+          <%= yield %>
+        </main>
           <!--</div>-->
         <!--</body>-->
       <!--</div>-->
-      <footer class="mt-auto" style="background-color: #FFF;">
-        <div class="container">
-          <div class="row no-gutters">
-            <div class="col-md-4" style="display: table;width: 100%;">
-              <p style="display: table-cell;vertical-align: middle;text-align: center;">cancle matching</p>
-            </div>
-            <div class="col-md-4" style="display: table;width: 100%;">
-              <div style="display: table-cell;vertical-align: middle;text-align: center;">@ 2024 AmiImamura</div>
-            </div>
-            <div class="col-md-4" style="display: table;width: 100%;">
-            <ul class="p-0 list-unstyled" style="display: table-cell;vertical-align: middle;text-align: center;">
-              <li>
-                <div class="text-50">会社概要</div>
-              </li>
-              <li>
-                <div class="text-50">利用規約</div>
-              </li>
-              <li>
-                <div class="text-50">プライバシーポリシー</div>
-              </li>
-            </ul>
-          </div>
-          </div>
+      <footer class="py-4">
+        <div class="container d-flex flex-column">
+          <%= image_tag "IMG_6641.png", class: 'img-fluid' %>
+          <ul class="list-unstyled mb-3">
+            <li>会社概要</li>
+            <li>利用規約</li>
+            <li>プライバシーポリシー</li>
+          </ul>
         </div>
+        <div class="text-center">
+          <small class="text-black-50">
+            &copy; 2024 AmiImamura
+          </small>
+        </div>
+        <!--<div class="container">-->
+        <!--  <div class="row no-gutters">-->
+        <!--    <div class="col-md-4" style="display: table;width: 100%;">-->
+        <!--      <p style="display: table-cell;vertical-align: middle;text-align: center;">cancle matching</p>-->
+        <!--    </div>-->
+        <!--    <div class="col-md-4" style="display: table;width: 100%;">-->
+        <!--      <div style="display: table-cell;vertical-align: middle;text-align: center;">@ 2024 AmiImamura</div>-->
+        <!--    </div>-->
+        <!--    <div class="col-md-4" style="display: table;width: 100%;">-->
+        <!--    <ul class="p-0 list-unstyled" style="display: table-cell;vertical-align: middle;text-align: center;">-->
+        <!--      <li>-->
+        <!--        <div class="text-50">会社概要</div>-->
+        <!--      </li>-->
+        <!--      <li>-->
+        <!--        <div class="text-50">利用規約</div>-->
+        <!--      </li>-->
+        <!--      <li>-->
+        <!--        <div class="text-50">プライバシーポリシー</div>-->
+        <!--      </li>-->
+        <!--    </ul>-->
+        <!--  </div>-->
+        <!--  </div>-->
+        <!--</div>-->
       </footer>
-    </div>
+    <!--</div>-->
   </body>
   <style>
 
