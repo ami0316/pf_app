@@ -1,8 +1,9 @@
  <div class="row">
     <div class="col-sm-10 col-md-8 col-lg-12">
-      <h1>レビュー一覧画面</h1>
+      <h1>レビュー一覧</h1>
 
-    <% @comments.each do |comment| %>
+    <% @rooms.each do |room| %>
+     <% room.hotel.comments.each do |comment| %>
       <div>
         <span class="mr-4"><%= comment.customer.first_name %></span>
         <span><%= l(comment.created_at, format: :long) %></span>
@@ -19,6 +20,7 @@
         </script>
         <%= link_to "削除", admin_review_path(comment), method: :delete, class: "btn btn-outline-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>
       </div>
+      <% end %>
     <% end %>
 
     </div>

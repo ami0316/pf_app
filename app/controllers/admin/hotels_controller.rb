@@ -8,9 +8,14 @@ class Admin::HotelsController < ApplicationController
   end
 
   def create
-    hotel = Hotel.new(hotel_params)
-    hotel.save
-    redirect_to admin_hotel_path(hotel.id)
+    @hotel = Hotel.new(hotel_params)
+    if @hotel.save
+      flash[:notice] = '施設名を登録しました。'
+      redirect_to admin_hotel_path(hotel.id)
+    else
+      flash[:notice] = '項目を入力してください。'
+      render :new
+    end
   end
 
 

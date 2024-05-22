@@ -13,11 +13,13 @@ class Admin::RoomsController < ApplicationController
   def create
      @room = Room.new(room_params)
      #@room.admin_id = current_admin.id
-     if @room.save!
+     if @room.save
        tags = params[:room][:tag].split(',')
        @room.save_tags(tags)
-       redirect_to admin_room_path(@room)
+       flash[:notice] = "投稿が完了しました。"
+       redirect_to admin_bookings_path
      else
+       flash[:notice] = '項目を入力してください。'
        render :new
      end
     # @room = current_admin.rooms.new(room_params)
@@ -63,5 +65,6 @@ private
 
   def room_params
     params.require(:room).permit(:hotel_id, :room_name, :room_details, :price, :image, :admin_id, :booking_date)
+                          .merge(admin_id: current_admin.id)
   end
 end

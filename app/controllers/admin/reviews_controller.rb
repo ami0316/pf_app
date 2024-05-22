@@ -1,6 +1,6 @@
 class Admin::ReviewsController < ApplicationController
   def index
-    @comments = Comment.all
+    @rooms = current_admin.rooms
     @comment = Comment.new
   end
 

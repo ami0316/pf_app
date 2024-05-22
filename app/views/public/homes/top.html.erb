@@ -11,13 +11,13 @@
         <%= image_tag 'autumn.jpg', class: 'img-fluid top-mv__img' %>
       </div>
       <div class="swiper-slide">
-        <%= image_tag 'street.webp', class: 'img-fluid top-mv__img' %>
+        <%#= image_tag 'street.webp', class: 'img-fluid top-mv__img' %>
        </div>
       <div class="swiper-slide">
-        <%= image_tag 'snowhouse.jpg', class: 'img-fluid top-mv__img' %>
+        <%#= image_tag 'snowhouse.jpg', class: 'img-fluid top-mv__img' %>
       </div>
        <div class="swiper-slide">
-        <%= image_tag 'purplesky.jpg', class: 'img-fluid top-mv__img' %>
+        <%#= image_tag 'purplesky.jpg', class: 'img-fluid top-mv__img' %>
       </div>
     </div>
   </div>
@@ -61,7 +61,7 @@
               <div class="card-body">
                 <h5><%= room.hotel.hotel_name %></h5>
                 <p><%= room.room_name %></p>
-                <p>&yen; <%= room.price %></p>
+                <p>&yen; <%= room.price.to_s(:delimited) %></p>
               </div>
             </div>
             <% end %>
@@ -90,7 +90,7 @@
   $(document).on('turbolinks:load', function() {
       var newRooms = new Swiper('.new-rooms', {
         loop: true,
-        speed: 30000,
+        speed: 70000,
         autoplay: {
           delay: 0,
         },

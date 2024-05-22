@@ -23,7 +23,7 @@
 <%= f.hidden_field :number_of_people, value: @number_of_people %>
 <%= f.hidden_field :price, value: @room.price * @number_of_people.to_i %>
 <%= f.hidden_field :room_id, value: @room.id %>
-<%= f.submit '予約を確定する', class: "btn btn-success" %>
+<%= f.submit '予約を確定する', class: "btn btn-outline-secondary" %>
 <% end %>
     </div>
   </div>

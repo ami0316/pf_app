@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2024_05_14_063310) do
     t.date "booking_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "admin_id"
   end
 
   create_table "tag_relationships", force: :cascade do |t|

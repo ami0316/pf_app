@@ -15,6 +15,7 @@ class Public::CustomersController < ApplicationController
 
   def mypage
      @customer = current_customer
+     @bookings = Booking.where(customer_id: @customer.id)
   end
 
   def update

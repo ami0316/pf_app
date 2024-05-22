@@ -1,5 +1,6 @@
 class Public::BookingsController < ApplicationController
   before_action :get_room, only: [:new, :confirm]
+  before_action :ensure_guest_customer, only: [:new]
 
   def confirm
     @number_of_people = params[:number_of_people]
@@ -46,5 +47,11 @@ class Public::BookingsController < ApplicationController
 
   def get_room
     @room = Room.find(params[:room_id])
+  end
+
+  def ensure_guest_customer
+    if current_customer.email == 'guest@example.com'
+      redirect_to root_path, notice: "ゲストユーザーの予約はできません。"
+    end
   end
 end

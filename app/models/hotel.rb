@@ -2,6 +2,11 @@ class Hotel < ApplicationRecord
    has_many :comments, dependent: :destroy
    has_many :rooms, dependent: :destroy
 
+  validates :hotel_name, presence: true
+  validates :body, presence: true
+  validates :url, presence: true
+  validates :telephone_number, presence: true
+
    # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"

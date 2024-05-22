@@ -65,6 +65,7 @@
             <div><%= @room.price %></div>
           </td>
         </tr>
+        <p><%= link_to "施設一覧へ戻る", hotels_path %></p>
       </tbody>
     </table>
   </div>
@@ -93,7 +94,7 @@
           half: false,
         });
       </script>
-        <%= f.submit "入力する", class: "btn btn-success btn-block" %>
+        <%= f.submit "入力する", class: "btn btn-outline-secondary btn-block" %>
       <% end %>
     </div>
   </div>

@@ -3,6 +3,7 @@ class Room < ApplicationRecord
   belongs_to :hotel
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships
+  belongs_to :admin
 
    # ActiveStorageの設定
   has_one_attached :image
