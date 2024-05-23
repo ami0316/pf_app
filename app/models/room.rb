@@ -4,6 +4,8 @@ class Room < ApplicationRecord
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships
   belongs_to :admin
+  
+  scope :is_view, -> { where(is_view: true) }
 
    # ActiveStorageの設定
   has_one_attached :image

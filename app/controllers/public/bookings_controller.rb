@@ -16,7 +16,7 @@ class Public::BookingsController < ApplicationController
                               customer_id: current_customer.id,
                               room_id: params[:room_id])
     WelcomeMailer.send_when_signup(current_customer.email, current_customer.last_name, @booking).deliver
-    Room.find(params[:room_id]).destroy
+    Room.find(params[:room_id]).update(is_view: false)
     redirect_to bookings_thanks_path
   end
 

@@ -15,7 +15,7 @@
 <!-- 投稿部分 -->
 <%= form_with model: @room, url: admin_bookings_path do |f| %>
   <h4>ホテル名</h4>
-  <%= f.collection_select :hotel_id, Hotel.all, :id, :hotel_name, {include_blank: "選択して下さい"}, class: 'form-control' %>
+  <%= f.collection_select :hotel_id, current_admin.hotels, :id, :hotel_name, {include_blank: "選択して下さい"}, class: 'form-control' %>
 
   <h4>予約日</h4>
   <%= f.date_field :booking_date, class: "form-control" %>

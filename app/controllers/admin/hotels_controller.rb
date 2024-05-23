@@ -11,7 +11,7 @@ class Admin::HotelsController < ApplicationController
     @hotel = Hotel.new(hotel_params)
     if @hotel.save
       flash[:notice] = '施設名を登録しました。'
-      redirect_to admin_hotel_path(hotel.id)
+      redirect_to admin_hotel_path(@hotel.id)
     else
       flash[:notice] = '項目を入力してください。'
       render :new
@@ -23,6 +23,6 @@ class Admin::HotelsController < ApplicationController
  private
 
   def hotel_params
-  params.require(:hotel).permit(:hotel_name, :body, :url, :telephone_number)
+  params.require(:hotel).permit(:hotel_name, :body, :url, :telephone_number).merge(admin_id: current_admin.id)
   end
 end

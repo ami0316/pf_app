@@ -1,6 +1,7 @@
 class Hotel < ApplicationRecord
    has_many :comments, dependent: :destroy
    has_many :rooms, dependent: :destroy
+   belongs_to :admin
 
   validates :hotel_name, presence: true
   validates :body, presence: true

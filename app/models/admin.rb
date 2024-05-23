@@ -5,4 +5,5 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :rooms, dependent: :destroy
+  has_many :hotels, dependent: :destroy
 end

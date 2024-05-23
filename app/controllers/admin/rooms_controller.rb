@@ -37,9 +37,6 @@ class Admin::RoomsController < ApplicationController
   def edit
     @room = Room.find(params[:id])
     @tags = @room.tags.pluck(:name).join(',')
-
-    pp '---------------------'
-    pp @tags
   end
 
   def update

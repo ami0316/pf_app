@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2024_05_14_063310) do
   end
 
   create_table "hotels", force: :cascade do |t|
+    t.integer "admin_id", null: false
     t.string "hotel_name", null: false
     t.text "body", null: false
     t.string "url", null: false
@@ -105,6 +106,7 @@ ActiveRecord::Schema.define(version: 2024_05_14_063310) do
     t.boolean "availability", default: true, null: false
     t.integer "hotel_id", null: false
     t.date "booking_date", null: false
+    t.boolean "is_view", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "admin_id"
