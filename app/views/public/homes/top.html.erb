@@ -25,12 +25,12 @@
 
 
 <div class="container">
-  <div class="row no-gutters mt-5">
-    <div class="col-md-6">
+  <div class="row no-gutters about">
+    <div class="col-md-6 py-5">
       <%= image_tag 'reception.jpg', class: 'img-fluid top-description__img' %>
     </div>
     <div class="col-md-6">
-      <div class="container-fluid h-100 d-flex flex-column justify-content-center">
+      <div class="container-fluid h-100 d-flex flex-column justify-content-center pt-3">
         <h2>cancel matchingとは</h2>
         <p>
           直近でキャンセルになってしまった施設側と予約を探しているお客様の両者がマッチングできるサイトです。<br>
@@ -42,8 +42,8 @@
   </div>
 </div>
 
-<div class="container-fluid mt-5">
-  <h2 class="text-center py-3">新着一覧</h2>
+<div class="container-fluid card-index">
+  <h2 class="text-center pb-3">新着一覧</h2>
 
 
   <div class="swiper new-rooms">
@@ -54,7 +54,7 @@
         <div class="row no-gutters">
         <% room_slice.each do |room| %>
           <div class="col-md-4 p-2">
-            <%= link_to hotel_path(room) do %>
+            <%= link_to hotel_path(room), class: 'text-decoration-none' do %>
             <div class="card">
               <%= image_tag room.image, class: 'top-new-room__img' if room.image.attached? %>
               <%= image_tag 'redbed.jpg', class: 'top-new-room__img' unless room.image.attached? %>
@@ -100,8 +100,8 @@
 
 </script>
 
-<div class="container-fluid mt-5">
-<h2 class="text-center py-3">よくある質問</h2>
+<div class="container-fluid faq-wrapper">
+<h2 class="text-center pb-3">よくある質問</h2>
 <div class="row">
    <div class="col-6">
     <!-- Button trigger modal -->
@@ -200,15 +200,24 @@
 
 </div>
 
+ <%= form_with model: @contact, url: homes_done_path, local: true do |f| %>
+  <div class="container-fluid contact">
+    <h2 class="text-center pb-3">お問い合わせ</h2>
 
-<div class="container-fluid mt-5">
-  <h2 class="text-center py-3">お問い合わせ</h2>
+      <div class="col-md-6 offset-md-3">
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.email_field :email, class: 'form-control', required: true %>
+        <div class="valid-feedback">
+          メールアドレスが入力されています。
+        </div>
+         <div class="invalid-feedback">
+          名前（性）を入力してください。
+        </div>
+      </div>
 
-  <div class="">
-    <form>
-      <div class="col-md-10 offset-md-1">
-        <label for="validationServer01">名前（性）</label>
-        <input type="text" class="form-control" id="last_name_field" required>
+      <div class="col-md-6 offset-md-3">
+        <%= f.label :last_name, '名前（性）' %>
+        <%= f.text_field :last_name, class: 'form-control', required: true %>
         <div class="valid-feedback">
            名前（性）が入力されています。
         </div>
@@ -217,42 +226,47 @@
         </div>
       </div>
 
-      <div class="col-md-10 offset-md-1">
-        <label for="validationServer02">名前（名）</label>
-        <input type="text" class="form-control" id="first_name_field" required>
-        <div class="valid-feedback">
+      <div class="col-md-6 offset-md-3">
+          <%= f.label :first_name, '名前（名）' %>
+          <%= f.text_field :first_name, class: 'form-control', required: true %>
+          <div class="valid-feedback">
            名前（名）が入力されています。
         </div>
         <div class="invalid-feedback">
           名前（名）を入力してください。
         </div>
       </div>
-      <div class="col-md-10 offset-md-1">
-        <label for="validationServer02">お問い合わせ内容</label>
-        <textarea class="form-control" id="body_field" required></textarea>
-        <div class="valid-feedback">
+      <div class="col-md-6 offset-md-3">
+          <%= f.label :body, 'お問い合わせ内容' %>
+          <%= f.text_area :body, class: 'form-control', required: true %>
+         <div class="valid-feedback">
           お問合わせ内容が入力されています。
         </div>
          <div class="invalid-feedback">
           お問い合わせ内容を入力してください。
         </div>
       </div>
-      <button class="btn btn-outline-secondary btn-lg btn-block col-md-10 offset-md-1 mt-4 mb-4 "  type="submit">送信</button>
-
-
+      <div class="d-flex justify-content-center mt-3">
+        <%= f.button '送信', class: 'btn btn-outline-secondary text-center w-25', 'data-disable-with': '送信中...', type: 'submit' %>
+      </div>
+      <% end %>
+    </div>
   </div>
-</div>
 
 <script>
-  $('#last_name_field').keyup(function(){
+  $('#email').keyup(function(){
     $(this).val().length > 0 ? $(this).removeClass('is-invalid').addClass('is-valid') : $(this).removeClass('is-valid').addClass('is-invalid')
   });
 
-  $('#first_name_field').keyup(function(){
+  $('#last_name').keyup(function(){
     $(this).val().length > 0 ? $(this).removeClass('is-invalid').addClass('is-valid') : $(this).removeClass('is-valid').addClass('is-invalid')
   });
 
-  $('#body_field').keyup(function(){
+  $('#first_name').keyup(function(){
+    $(this).val().length > 0 ? $(this).removeClass('is-invalid').addClass('is-valid') : $(this).removeClass('is-valid').addClass('is-invalid')
+  });
+
+  $('#body').keyup(function(){
     $(this).val().length > 0 ? $(this).removeClass('is-invalid').addClass('is-valid') : $(this).removeClass('is-valid').addClass('is-invalid')
   });
 </script>

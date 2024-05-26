@@ -1,5 +1,15 @@
 // bootstrap追加記述
-@use '~bootstrap/scss/bootstrap';
+ $theme-colors: (
+     "primary": #000,
+//     "secondary": #000,
+//     "info": #000,
+//     "warning": #000,
+//     "danger": #000,
+ );
+
+$enable-rounded: false;
+
+@import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
 
 body {
@@ -83,4 +93,12 @@ footer img {
 
 .black-text {
   color: black;
+}
+
+.about,
+.faq-wrapper,
+.card-index,
+.footer-wrapper,
+.contact {
+    margin-top: 150px;
 }

@@ -30,6 +30,8 @@ devise_for :admin, skip: [:passwords] ,controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'homes/about' => 'homes#about'
+    post 'homes' => 'homes#create'
+    post 'homes/done' => 'homes#done'
     get 'sessions/new' => 'sessions#new'
     get 'customers/mypage' => 'customers#mypage'
     get 'search' => 'searches#search'

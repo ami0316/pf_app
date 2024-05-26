@@ -128,7 +128,7 @@
             </div>
             <% if comment.customer == current_customer %>
               <div class="d-flex justify-content-end">
-                <%= link_to "削除", hotel_comment_path(@hotel, comment), method: :delete, class: "btn btn-danger ml-auto", "deta-confirm" => "本当に削除しますか？" %>
+                <%= link_to "削除", hotel_comment_path(@hotel, comment), method: :delete, class: "btn btn-outline-secondary", "deta-confirm" => "本当に削除しますか？" %>
               </div>
             <% end %>
           </div>

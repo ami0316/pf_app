@@ -5,4 +5,10 @@ class Public::HomesController < ApplicationController
 
   def about
   end
+
+  def done
+    ContactMailer.send_mail(params).deliver
+  end
+
+
 end
