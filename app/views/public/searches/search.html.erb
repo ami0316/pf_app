@@ -9,7 +9,7 @@
         <% @hotels.each do |hotel| %>
           <tr>
             <p>ホテル名：<span><%= hotel.hotel_name %></span></p>
-             <% hotel.rooms.each do |room| %>
+             <% hotel.rooms.is_view.each do |room| %>
               <p>部屋名：<span><%= room.room_name %></span></p>
               <p>部屋詳細：<span><%= room.room_details %></span></p>
               <p>金額：<span><%= room.price %></span></p>
