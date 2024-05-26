@@ -1,23 +1,23 @@
 <div class="position-relative d-flex align-items-center">
   <div class="position-absolute d-flex justify-content-center w-100 py-3 top-mv__filter">
-    <%= image_tag "logo.png", style: 'width: auto; height: 100px' %>
+    <%= image_tag asset_path('logo.png'), style: 'width: auto; height: 100px' %>
   </div>
   <div class="swiper main-visual">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <%= image_tag 'oceanhotel.jpg', class: 'img-fluid top-mv__img' %>
+        <%= image_tag asset_path('oceanhotel.jpg'), class: 'img-fluid top-mv__img' %>
       </div>
       <div class="swiper-slide">
-        <%= image_tag 'autumn.jpg', class: 'img-fluid top-mv__img' %>
+        <%= image_tag asset_path('autumn.jpg'), class: 'img-fluid top-mv__img' %>
       </div>
       <div class="swiper-slide">
-        <%= image_tag 'street.webp', class: 'img-fluid top-mv__img' %>
+        <%= image_tag asset_path('street.webp'), class: 'img-fluid top-mv__img' %>
        </div>
       <div class="swiper-slide">
-        <%= image_tag 'snowhouse.jpg', class: 'img-fluid top-mv__img' %>
+        <%= image_tag asset_path('snowhouse.jpg'), class: 'img-fluid top-mv__img' %>
       </div>
        <div class="swiper-slide">
-        <%= image_tag 'purplesky.jpg', class: 'img-fluid top-mv__img' %>
+        <%= image_tag asset_path('purplesky.jpg'), class: 'img-fluid top-mv__img' %>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
 <div class="container">
   <div class="row no-gutters about">
     <div class="col-md-6 py-5">
-      <%= image_tag 'reception.jpg', class: 'img-fluid top-description__img' %>
+      <%= image_tag asset_path('reception.jpg'), class: 'img-fluid top-description__img' %>
     </div>
     <div class="col-md-6">
       <div class="container-fluid h-100 d-flex flex-column justify-content-center pt-3">
@@ -57,7 +57,7 @@
             <%= link_to hotel_path(room), class: 'text-decoration-none' do %>
             <div class="card">
               <%= image_tag room.image, class: 'top-new-room__img' if room.image.attached? %>
-              <%= image_tag 'redbed.jpg', class: 'top-new-room__img' unless room.image.attached? %>
+              <%= image_tag asset_path('redbed.jpg'), class: 'top-new-room__img' unless room.image.attached? %>
               <div class="card-body">
                 <h5><%= room.hotel.hotel_name %></h5>
                 <p><%= room.room_name %></p>
