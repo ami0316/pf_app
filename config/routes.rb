@@ -3,7 +3,12 @@ Rails.application.routes.draw do
 #　管理者側のルーティング
   namespace :admin do
     resources :bookings
-    resources :customers
+    resources :hotels do # Good ^_^
+      resources :rooms
+    end
+    resources :rooms # No Good T_T
+    resources :customers, only: [:index, :show, :destroy]
+    resources :reviews
     get 'customers/unsubscribe'
   end
 
@@ -16,7 +21,8 @@ devise_for :customers,skip: [:passwords], controllers: {
 
 # 管理者用
 # URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+devise_for :admin, skip: [:passwords] ,controllers: {
+  registrations: "admin/registrations",
   sessions: "admin/sessions"
 }
 
@@ -24,6 +30,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'homes/about' => 'homes#about'
+    post 'homes' => 'homes#create'
+    post 'homes/done' => 'homes#done'
     get 'sessions/new' => 'sessions#new'
     get 'customers/mypage' => 'customers#mypage'
     get 'search' => 'searches#search'

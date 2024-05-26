@@ -1,18 +1,42 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-sm12 col-md-12 col-lg-12'>
+    <div class='col-lg-12'>
 
 <%= render 'public/searches/search' %>
 
 <h1>ホテル・旅館・宿泊施設</h1>
 
+<% if params[:hotel_id] %>
+  <ul>
+    <li><%= @rooms.first.hotel.hotel_name %></li>
+    <li><%= @rooms.first.hotel.body %></li>
+    <li><%= @rooms.first.hotel.url %></li>
+    <li><%= @rooms.first.hotel.telephone_number %></li>
+  </ul>
+<% end %>
+
+<% if params[:tag_id] %>
+  <h2>
+    <%= Tag.find(params[:tag_id]).name %>に関するお部屋
+  </h2>
+<% end %>
+
 <% @rooms.each do |room| %>
-  <table class = "table table-striped">
+<%# @tags.each do |tag| %>
+  <table class = "table table-light">
     <tr>
-      <td>ホテル名：<%= room.hotel.hotel_name %></td>
+      <td>ホテル名：<%= link_to room.hotel.hotel_name, hotels_path(hotel_id: room.hotel) %></td>
       <td>部屋名：<%= room.room_name %></td>
       <td>空室日：<%= room.booking_date %></td>
-      <td>金額：<%= room.price %></td>
+      <td>金額：&yen; <%= room.price.to_s(:delimited) %></td>
+      <td>
+        タグ：
+        <% room.tags.each do |tag| %>
+          <%= link_to hotels_path(tag_id: tag), class: 'text-decoration-none' do %>
+            <span class="badge badge-secondary mr-2"><%= tag.name %></span>
+          <% end %>
+        <% end %>
+      </td>
       <!--<td>お部屋のイメージ-->
       <td>
         <% if room.image.attached? %>
@@ -21,10 +45,11 @@
           <%= image_tag 'no_image', size: "100x100" %>
         <% end %>
       </td>
-      <td><%= link_to "詳細", hotel_path(room.hotel.id), class: "btn btn-success" %> </td>
-      <td><%= link_to "予約する", new_booking_path(room_id: room.id), class: "btn btn-info" %></td>
+      <td><%= link_to "詳細", hotel_path(room), class: "btn btn-outline-secondary" %> </td>
+      <td><%= link_to "予約する", new_booking_path(room_id: room.id), class: "btn btn-outline-info" %></td>
     </tr>
   </table>
+<%# end %>
 <% end %>
     </div>
   </div>

@@ -1,0 +1,9 @@
+<h1>お問い合わせがありました</h1>
+
+<h2><%= "#{@data[:last_name]} #{@data[:first_name]}" %>様</h2>
+
+<h3>メールアドレス</h3>
+<%= @data[:email] %>
+
+<h3>内容</h3>
+<%= simple_format(@data[:body], sanitize: true) %>

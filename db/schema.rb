@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_08_045436) do
+ActiveRecord::Schema.define(version: 2024_05_14_063310) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2024_05_08_045436) do
     t.string "comment", null: false
     t.integer "customer_id", null: false
     t.integer "hotel_id", null: false
+    t.integer "star", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 2024_05_08_045436) do
   end
 
   create_table "hotels", force: :cascade do |t|
+    t.integer "admin_id", null: false
     t.string "hotel_name", null: false
     t.text "body", null: false
     t.string "url", null: false
@@ -104,11 +106,29 @@ ActiveRecord::Schema.define(version: 2024_05_08_045436) do
     t.boolean "availability", default: true, null: false
     t.integer "hotel_id", null: false
     t.date "booking_date", null: false
+    t.boolean "is_view", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "admin_id"
   end
 
+  create_table "tag_relationships", force: :cascade do |t|
+    t.integer "room_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_tag_relationships_on_room_id"
+    t.index ["tag_id"], name: "index_tag_relationships_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "tag_relationships", "rooms"
+  add_foreign_key "tag_relationships", "tags"
 end

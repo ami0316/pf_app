@@ -1,24 +1,37 @@
-<div class="container">
+  <div class="container">
   <div class="row">
-    <div class="col-sm-10 col-md-8 col-lg-6">
-      <h1>登録したホテル一覧</h1>
-        <% @rooms.each do |room| %>
-      <p>ホテル、部屋名</p>
-        <%= room.hotel.hotel_name %>
-      <p>部屋詳細</p>
-        <%= room.room_details %>
-      <p>金額</p>
-        <%= room.price %>
-      <p>画像</p>
-        <% if room.image.attached? %>
+      <h1>登録した施設一覧</h1>
+
+<table class ="table">
+  <thead>
+    <tr>
+      <th>予約済</th>
+      <th>宿泊施設名</th>
+      <th>部屋詳細</th>
+      <th>金額</th>
+      <th>画像</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @rooms.each do |room| %>
+     <tr>
+        <td><%= room.is_view ? '<span class="text-danger">未決定</span>'.html_safe : '<span class="text-success">決定済</span>'.html_safe %></td>
+        <td><%= room.hotel.hotel_name %></td>
+        <td><%= room.room_details %></td>
+        <td>&yen; <%= room.price.to_s(:delimited) %></td>
+        <td><% if room.image.attached? %>
           <%= image_tag room.image, size: "100x100" %>
         <% else %>
-          <%= image_tag 'no_image', size: "100x100" %>
+          <%= image_tag 'no_image', size: "100x100" %></td>
         <% end %>
       <span>
-        <%= link_to '詳細', admin_booking_path(room.id) %>
+        <td><%= link_to '詳細', admin_booking_path(room.id), class: "btn btn-outline-secondary" %></td>
       </span>
+       </tr>
         <% end %>
+  </tbody>
+</table>
     </div>
   </div>
+</div>
 </div>

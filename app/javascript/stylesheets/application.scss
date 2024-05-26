@@ -1,5 +1,33 @@
 // bootstrap追加記述
-@use '~bootstrap/scss/bootstrap';
+ $theme-colors: (
+     "primary": #000,
+//     "secondary": #000,
+//     "info": #000,
+//     "warning": #000,
+//     "danger": #000,
+ );
+
+$enable-rounded: false;
+
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
+
+body {
+    font-family: "Noto Serif JP", serif;
+    line-height: 1.8;
+    padding-top: 73px;
+}
+
+header {
+    top: 0;
+    left: 0;
+    z-index: 10000;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
 
 .wrap {
     display: flex;
@@ -19,4 +47,58 @@
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.top-mv__filter {
+    backdrop-filter: brightness(150%) blur(20px);
+    z-index: 9999;
+}
+
+.top-mv__img {
+    height: 720px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.top-description__img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.top-new-room__img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+footer {
+    background-color: #fff;
+}
+
+footer ul {
+    line-height: 2;
+    font-size: calc(10px + .3vw);
+}
+
+footer img {
+    width: 200px;
+    height: auto;
+}
+
+.btn-narrow {
+    width: 100px;
+    margin-left: auto;
+}
+
+.black-text {
+  color: black;
+}
+
+.about,
+.faq-wrapper,
+.card-index,
+.footer-wrapper,
+.contact {
+    margin-top: 150px;
 }

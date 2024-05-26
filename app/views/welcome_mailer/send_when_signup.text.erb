@@ -1,0 +1,22 @@
+-------------------------------
+      <%= @last_name %> さま
+-------------------------------
+
+この度は、cancel matchingでのご予約を承りました。
+当日はお気を付けてお越し下さいませ。
+
+予約日
+<%= @booking.booking_date %>
+チェックイン時間
+<%= @booking.time %>
+人数
+<%= @booking.number_of_people %> 人
+
+ホテル名
+<%= @booking.room.hotel.hotel_name %>
+
+部屋
+<%= @booking.room.room_name %>
+
+cancel matching
+

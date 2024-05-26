@@ -1,28 +1,272 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-sm-10 col-md-12 col-lg-12'>
-
-      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: First slide"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
-          </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Second slide"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+<div class="position-relative d-flex align-items-center">
+  <div class="position-absolute d-flex justify-content-center w-100 py-3 top-mv__filter">
+    <%= image_tag "logo.png", style: 'width: auto; height: 100px' %>
+  </div>
+  <div class="swiper main-visual">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <%= image_tag 'oceanhotel.jpg', class: 'img-fluid top-mv__img' %>
       </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Third slide"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
+      <div class="swiper-slide">
+        <%= image_tag 'autumn.jpg', class: 'img-fluid top-mv__img' %>
       </div>
-          </div>
-      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      <div class="swiper-slide">
+        <%#= image_tag 'street.webp', class: 'img-fluid top-mv__img' %>
+       </div>
+      <div class="swiper-slide">
+        <%#= image_tag 'snowhouse.jpg', class: 'img-fluid top-mv__img' %>
+      </div>
+       <div class="swiper-slide">
+        <%#= image_tag 'purplesky.jpg', class: 'img-fluid top-mv__img' %>
       </div>
     </div>
   </div>
 </div>
+
+
+<div class="container">
+  <div class="row no-gutters about">
+    <div class="col-md-6 py-5">
+      <%= image_tag 'reception.jpg', class: 'img-fluid top-description__img' %>
+    </div>
+    <div class="col-md-6">
+      <div class="container-fluid h-100 d-flex flex-column justify-content-center pt-3">
+        <h2>cancel matchingとは</h2>
+        <p>
+          直近でキャンセルになってしまった施設側と予約を探しているお客様の両者がマッチングできるサイトです。<br>
+          「キャンセル」という言葉をマイナスではなくマッチできる、というプラスの捉え方をもって頂きたくcancel matchingというサイト名にしました。<br>
+          直近で空室のホテルを探している時、キャンセルになってしまったお部屋を他のお客様に宿泊してほしい時‥様々な用途でご利用していただけますと幸いです。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid card-index">
+  <h2 class="text-center pb-3">新着一覧</h2>
+
+
+  <div class="swiper new-rooms">
+    <div class="swiper-wrapper">
+
+      <% @rooms.each_slice(3) do |room_slice| %>
+      <div class="swiper-slide">
+        <div class="row no-gutters">
+        <% room_slice.each do |room| %>
+          <div class="col-md-4 p-2">
+            <%= link_to hotel_path(room), class: 'text-decoration-none' do %>
+            <div class="card">
+              <%= image_tag room.image, class: 'top-new-room__img' if room.image.attached? %>
+              <%= image_tag 'redbed.jpg', class: 'top-new-room__img' unless room.image.attached? %>
+              <div class="card-body">
+                <h5><%= room.hotel.hotel_name %></h5>
+                <p><%= room.room_name %></p>
+                <p>&yen; <%= room.price.to_s(:delimited) %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // Swiperを実行(初期化)
+  $(document).on('turbolinks:load', function() {
+      new Swiper('.main-visual', {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+        },
+      });
+  });
+
+    // Swiperを実行(初期化)
+  $(document).on('turbolinks:load', function() {
+      var newRooms = new Swiper('.new-rooms', {
+        loop: true,
+        speed: 70000,
+        autoplay: {
+          delay: 0,
+        },
+      });
+  });
+
+
+</script>
+
+<div class="container-fluid faq-wrapper">
+<h2 class="text-center pb-3">よくある質問</h2>
+<div class="row">
+   <div class="col-6">
+    <!-- Button trigger modal -->
+    <div class="text-dark border p-3 mt-2" data-toggle="modal" data-target="#exampleModalCenter">
+       cancel matchingとはどんなサイトですか？
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">cancel matchingとはどんなサイトですか？</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+           直近でキャンセルになってしまった施設側と予約を探しているお客様の両者がマッチングできるサイトです。
+           直近で宿泊施設を探している時、直前割でお得に宿泊したい時等でお客様はご利用でき、宿泊施設様は直近でキャンセルになってしまったお部屋を掲載することができます。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div class="col-6">
+    <!-- Button trigger modal -->
+    <div class="text-dark border p-3 mt-2" data-toggle="modal" data-target="#exampleModalCenter2">
+   どんな宿泊施設がありますか？
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">どんな宿泊施設がありますか？</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            全国のホテル、旅館、ビジネスホテル等が掲載されています。一覧からご覧になり、予約することができます。
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div class="col-6">
+    <!-- Button trigger modal -->
+    <div class="text-dark border p-3 mt-2" data-toggle="modal" data-target="#exampleModalCenter3">
+      宿泊した方の口コミが知りたいのですが‥
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"> 宿泊した方の口コミが知りたいのですが‥</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+             ホテル一覧から掲載されているお部屋からの詳細ページにて口コミとレビュー評価を確認することができます。
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+   <div class="col-6">
+    <!-- Button trigger modal -->
+    <div class="text-dark border p-3 mt-2" data-toggle="modal" data-target="#exampleModalCenter4">
+      予約後はどうやって確認できますか？
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">予約後はどうやって確認できますか？</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ご予約完了後は会員様のご登録のメールアドレスに予約完了メールをお送りしております。また、マイページから予約履歴でも確認していただけます。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+ <%= form_with model: @contact, url: homes_done_path, local: true do |f| %>
+  <div class="container-fluid contact">
+    <h2 class="text-center pb-3">お問い合わせ</h2>
+
+      <div class="col-md-6 offset-md-3">
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.email_field :email, class: 'form-control', required: true %>
+        <div class="valid-feedback">
+          メールアドレスが入力されています。
+        </div>
+         <div class="invalid-feedback">
+          名前（性）を入力してください。
+        </div>
+      </div>
+
+      <div class="col-md-6 offset-md-3">
+        <%= f.label :last_name, '名前（性）' %>
+        <%= f.text_field :last_name, class: 'form-control', required: true %>
+        <div class="valid-feedback">
+           名前（性）が入力されています。
+        </div>
+         <div class="invalid-feedback">
+          名前（性）を入力してください。
+        </div>
+      </div>
+
+      <div class="col-md-6 offset-md-3">
+          <%= f.label :first_name, '名前（名）' %>
+          <%= f.text_field :first_name, class: 'form-control', required: true %>
+          <div class="valid-feedback">
+           名前（名）が入力されています。
+        </div>
+        <div class="invalid-feedback">
+          名前（名）を入力してください。
+        </div>
+      </div>
+      <div class="col-md-6 offset-md-3">
+          <%= f.label :body, 'お問い合わせ内容' %>
+          <%= f.text_area :body, class: 'form-control', required: true %>
+         <div class="valid-feedback">
+          お問合わせ内容が入力されています。
+        </div>
+         <div class="invalid-feedback">
+          お問い合わせ内容を入力してください。
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <%= f.button '送信', class: 'btn btn-outline-secondary text-center w-25', 'data-disable-with': '送信中...', type: 'submit' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+<script>
+  $('#email').keyup(function(){
+    $(this).val().length > 0 ? $(this).removeClass('is-invalid').addClass('is-valid') : $(this).removeClass('is-valid').addClass('is-invalid')
+  });
+
+  $('#last_name').keyup(function(){
+    $(this).val().length > 0 ? $(this).removeClass('is-invalid').addClass('is-valid') : $(this).removeClass('is-valid').addClass('is-invalid')
+  });
+
+  $('#first_name').keyup(function(){
+    $(this).val().length > 0 ? $(this).removeClass('is-invalid').addClass('is-valid') : $(this).removeClass('is-valid').addClass('is-invalid')
+  });
+
+  $('#body').keyup(function(){
+    $(this).val().length > 0 ? $(this).removeClass('is-invalid').addClass('is-valid') : $(this).removeClass('is-valid').addClass('is-invalid')
+  });
+</script>

@@ -7,6 +7,7 @@ class CreateRooms < ActiveRecord::Migration[6.1]
       t.boolean :availability, default: true, null: false
       t.integer :hotel_id, null: false
       t.date :booking_date, null: false
+      t.boolean :is_view, default: true
 
       t.timestamps
     end

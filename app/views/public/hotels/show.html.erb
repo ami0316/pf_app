@@ -1,7 +1,7 @@
 <h1>宿泊施設の詳細</h1>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-10 col-lg-4">
     <div class="mb-3">
       <% if @room.image.attached? %>
         <%= image_tag @room.image, style: "width:100%;" %>
@@ -30,7 +30,7 @@
         </tr>
         <tr>
           <th>金額</th>
-          <td><%= @room.price %></td>
+          <td>&yen; <%= @room.price.to_s(:delimited) %></td>
         </tr>
       </tbody>
     </table>
@@ -65,6 +65,7 @@
             <div><%= @room.price %></div>
           </td>
         </tr>
+        <p><%= link_to "施設一覧へ戻る", hotels_path %></p>
       </tbody>
     </table>
   </div>
@@ -74,14 +75,30 @@
 
 <div class="row">
   <div class="col-md-4">
-    <h4>コメントを残す</h4>
+    <h4>コメント、レビューを残す</h4>
     <div class="mb-4">
       <%= form_with model: [@hotel, @comment], url: hotel_comments_path(@hotel)  do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control mb-2" %>
-        <%= f.submit "入力する", class: "btn btn-success btn-block" %>
+         <div class="form-group row" id="star">
+          <%= f.label :star,'評価 ', class: 'col-md-3 col-form-label' %>
+          <div id="star"></div>
+         </div>
+      <!-- 評価javascript -->
+      <script>
+
+        $('#star').raty({
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+
+          scoreName: 'comment[star]',
+          half: false,
+        });
+      </script>
+        <%= f.submit "入力する", class: "btn btn-outline-secondary btn-block" %>
       <% end %>
     </div>
   </div>
+
   <div class="col-md-8">
     <div class="d-flex justify-content-between">
       <h4>コメント一覧</h4>
@@ -97,10 +114,21 @@
             <div class="d-flex justify-content-end mb-2">
               <span class="mr-4"><%= comment.customer.first_name %></span>
               <span><%= l(comment.created_at, format: :long) %></span>
+              <span>評価 :<%= comment.star%>点</span>
+            <div id="star-rate-<%= comment.id%>"></div>
+            <script>
+              $('#star-rate-<%= comment.id%>').raty({
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= comment.star %>,
+              });
+            </script>
             </div>
             <% if comment.customer == current_customer %>
               <div class="d-flex justify-content-end">
-                <%= link_to "削除", hotel_comment_path(@hotel, comment), method: :delete, class: "btn btn-danger ml-auto", "deta-confirm" => "本当に削除しますか？" %>
+                <%= link_to "削除", hotel_comment_path(@hotel, comment), method: :delete, class: "btn btn-outline-secondary", "deta-confirm" => "本当に削除しますか？" %>
               </div>
             <% end %>
           </div>

@@ -12,9 +12,16 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"; 
+import "../stylesheets/application";
 
+// 評価機能での追加記述
+import "jquery-raty-js";
+
+import Swiper from 'swiper/swiper-bundle.js';
+import 'swiper/swiper-bundle.css';
+window.Swiper = Swiper;
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+

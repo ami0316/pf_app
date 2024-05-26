@@ -27,12 +27,12 @@
  <%= f.text_field :last_name_kana, class: "form-control" %>
 
 <p>メールアドレス</p>
- <%= f.text_field :emai, class: "form-control" %><br><br>
+ <%= f.text_field :email, class: "form-control" %><br><br>
 
-  <%= f.submit '更新', class: "btn btn-success" %>
+  <%= f.submit '更新', class: "btn btn-outline-secondary btn-lg btn-block" %>
 <% end %>
 
-<%= link_to "退会する", customer_path(current_customer.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
+<%= link_to "退会する", customer_path(current_customer.id), method: :delete, class: "btn btn-outline-danger btn-lg btn-block mt-2", "data-confirm" => "本当に退会しますか？" %>
     </div>
   </div>
 </div>

@@ -1,9 +1,54 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-10 offset-sm-5 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-      <h1>会員のマイページ</h1>
+    <div class="col-md-10 offset-md-1 col-lg-12">
+      <h1 class="mb-4"><%= current_customer.last_name %>さまのマイページ</h1>
+      <h4 class="mb-2">登録情報</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>名前（性）</th>
+            <th>名前（名）</th>
+            <th>フリガナ（セイ）</th>
+            <th>フリガナ（メイ）</th>
+            <th>メールアドレス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @customer.first_name %></td>
+            <td><%= @customer.last_name %></td>
+            <td><%= @customer.first_name_kana %></td>
+            <td><%= @customer.last_name_kana %></td>
+            <td><%= @customer.email %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @customer.email != "guest@example.com" %>
+       <%= link_to 'ユーザー編集', edit_customer_path(@customer.id),class: "btn btn-outline-secondary btn-narrow d-flex" %>
+      <% end %>
+       <h4 class="mb-2">予約履歴</h4>
+       <table class="table">
+         <thead>
+           <tr>
+             <th>予約日</th>
+             <th>ホテル名</th>
+             <th>部屋</th>
+             <th>チェックイン時間</th>
+             <th>人数</th>
+           </tr>
+         </thead>
+         <tbody>
+           <% @bookings.each do |booking| %>
+           <tr>
+             <td><%= booking.booking_date %></td>
+             <td><%= booking.room.hotel.hotel_name %></td>
+             <td><%= booking.room.room_name %></td>
+             <td><%= booking.time.strftime('%H:%M') %></td>
+             <td><%= booking.number_of_people %></td>
+           </tr>
+           <% end %>
+         </tbody>
+       </table>
 
-      <%= link_to 'ユーザー編集', edit_customer_path(@customer.id),class: "btn btn-info" %>
     </div>
   </div>
-</div>

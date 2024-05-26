@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-10 offset-sm-5 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <div class="col-sm-12 offset-sm-4 col-md-12 offset-md-4 col-lg-12 offset-lg-4">
 <h1>予約情報確認</h1>
 
 <h4>予約者情報</h4>
@@ -14,8 +14,8 @@
 <p>宿泊日：<span><%= @room.booking_date %></span>
 </p>
 <p>チェックイン予定時間：<%= @time %></p>
-<p>宿泊人数：<%= @number_of_people %></p>
-<p>合計支払金額：<%= @room.price * @number_of_people.to_i %></p>
+<p>宿泊人数：<%= @number_of_people %> 名</p>
+<p>合計支払金額：<%= @room.price * @number_of_people.to_i %> 円</p>
 
 <%= form_with model: @booking, url: bookings_path do |f| %>
 <%= f.hidden_field :booking_date, value: @room.booking_date %>
@@ -23,7 +23,7 @@
 <%= f.hidden_field :number_of_people, value: @number_of_people %>
 <%= f.hidden_field :price, value: @room.price * @number_of_people.to_i %>
 <%= f.hidden_field :room_id, value: @room.id %>
-<%= f.submit '予約を確定する', class: "btn btn-success" %>
+<%= f.submit '予約を確定する', class: "btn btn-outline-secondary" %>
 <% end %>
     </div>
   </div>
