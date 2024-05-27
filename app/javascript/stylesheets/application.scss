@@ -1,7 +1,7 @@
 // bootstrap追加記述
  $theme-colors: (
      "primary": #000,
-//     "secondary": #000,
+    //  "secondary": #A242E6,
 //     "info": #000,
 //     "warning": #000,
 //     "danger": #000,
@@ -101,4 +101,9 @@ footer img {
 .footer-wrapper,
 .contact {
     margin-top: 150px;
+}
+
+// kaminari
+.pagination {
+    justify-content: center;
 }

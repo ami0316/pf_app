@@ -68,3 +68,9 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+# kaminari追加
+gem 'kaminari','~> 1.2.1'
+
+# 非同期追加
+gem 'jquery-rails'

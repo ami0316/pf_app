@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-between">
+      <h4>コメント一覧</h4>
+      <p>コメント件数：<%= hotel.comments.count %></p>
+    </div>
+    <div class="mb-4">
+      <% comments.each do |comment| %>
+        <div class="card mb-2">
+          <div class="card-body">
+            <div>
+              <%= simple_format(comment.comment) %>
+            </div>
+            <div class="d-flex justify-content-end mb-2">
+              <span class="mr-4"><%= comment.customer.first_name %></span>
+              <span><%= l(comment.created_at, format: :long) %></span>
+              <span>評価 :<%= comment.star%>点</span>
+            <div id="star-rate-<%= comment.id%>"></div>
+            <script>
+              $('#star-rate-<%= comment.id%>').raty({
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= comment.star %>,
+              });
+            </script>
+            </div>
+            <% if comment.customer == current_customer %>
+              <div class="d-flex justify-content-end">
+                <%= link_to "削除", hotel_comment_path(hotel, comment), method: :delete, class: "btn btn-outline-secondary", remote: true, data: {confirm: "本当に削除しますか？"} %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
