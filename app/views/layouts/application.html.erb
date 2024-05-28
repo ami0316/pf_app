@@ -8,7 +8,6 @@
     <script src="https://kit.fontawesome.com/c3fd8eb30a.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!--<link href="https://cdn.jsdelivr.net/npm/jquery-raty-js@2.8.0/lib/jquery.raty.min.css" rel="stylesheet">-->
   </head>
   <body class="d-flex flex-column min-vh-100">
     <header class="position-fixed w-100" style="background-color: #fff;">
@@ -17,10 +16,6 @@
           <%= link_to root_path, class: "navbar-brand" do %>
             <%= image_tag "IMG_6641.png", alt: "Image", class: 'logo' %>
           <% end %>
-          <%#= link_to root_path, class: "navbar-brand p-3 text-white" do %>
-          <%#= image_tag("IMG.6641.png", alt: "Image") %>
-          <!--cancel matching-->
-          <%# end %>
           <i class="fa-solid fa-magnifying-glass" style="color:white;"></i>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border-color:white;">
             <span class="navbar-toggler-icon" style="border-color:white;"></span>
@@ -37,7 +32,6 @@
                   <li class="nav-item"><%= link_to 'ログアウト',  destroy_customer_session_path, method: :delete, class: "nav-link" %></li>
 
               <% elsif admin_signed_in? %>
-                  <!--<li><#%= link_to '新規投稿',  new_admin_booking_path, class: "btn btn-outline-light" %></li>-->
                   <li class="nav-item"><%= link_to '投稿一覧', admin_bookings_path, class: "nav-link" %></li>
                   <li class="nav-item"><%= link_to '会員一覧', admin_customers_path, class: "nav-link" %></li>
                   <li class="nav-item"><%= link_to 'レビュー一覧', admin_reviews_path, class: "nav-link" %></li>
@@ -58,10 +52,6 @@
         </div>
       </nav>
     </header>
-    <!--<div class="wrap">-->
-      <!--<div class="container">-->
-        <!--<body class="d-flex flex-column">-->
-        <!--<body>-->
           <%# deivseのフラッシュメッセージを表示 %>
           <% if notice %>
             <div class="container">
@@ -74,13 +64,9 @@
             </div>
           <% end %>
 
-          <!--<div class="row">-->
         <main class="flex-grow-1">
           <%= yield %>
         </main>
-          <!--</div>-->
-        <!--</body>-->
-      <!--</div>-->
       <footer class="footer-wrapper">
         <div class="container d-flex flex-column">
           <%= image_tag "IMG_6641.png", class: 'img-fluid' %>
@@ -95,31 +81,7 @@
             &copy; 2024 AmiImamura
           </small>
         </div>
-        <!--<div class="container">-->
-        <!--  <div class="row no-gutters">-->
-        <!--    <div class="col-md-4" style="display: table;width: 100%;">-->
-        <!--      <p style="display: table-cell;vertical-align: middle;text-align: center;">cancle matching</p>-->
-        <!--    </div>-->
-        <!--    <div class="col-md-4" style="display: table;width: 100%;">-->
-        <!--      <div style="display: table-cell;vertical-align: middle;text-align: center;">@ 2024 AmiImamura</div>-->
-        <!--    </div>-->
-        <!--    <div class="col-md-4" style="display: table;width: 100%;">-->
-        <!--    <ul class="p-0 list-unstyled" style="display: table-cell;vertical-align: middle;text-align: center;">-->
-        <!--      <li>-->
-        <!--        <div class="text-50">会社概要</div>-->
-        <!--      </li>-->
-        <!--      <li>-->
-        <!--        <div class="text-50">利用規約</div>-->
-        <!--      </li>-->
-        <!--      <li>-->
-        <!--        <div class="text-50">プライバシーポリシー</div>-->
-        <!--      </li>-->
-        <!--    </ul>-->
-        <!--  </div>-->
-        <!--  </div>-->
-        <!--</div>-->
       </footer>
-    <!--</div>-->
   </body>
   <style>
 

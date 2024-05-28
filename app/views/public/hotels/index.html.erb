@@ -37,7 +37,6 @@
           <% end %>
         <% end %>
       </td>
-      <!--<td>お部屋のイメージ-->
       <td>
         <% if room.image.attached? %>
           <%= image_tag room.image, size: "100x100" %>
@@ -49,7 +48,6 @@
       <td><%= link_to "予約する", new_booking_path(room_id: room.id), class: "btn btn-outline-info" %></td>
     </tr>
   </table>
-<%# end %>
 <% end %>
 <%= paginate @rooms %>
     </div>
