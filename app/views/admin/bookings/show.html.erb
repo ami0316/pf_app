@@ -19,7 +19,7 @@
   <td><% if @room.image.attached? %>
     <%= image_tag @room.image, size: "200x200" %>
   <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
+    <%= image_tag 'no_image.jpg', size: "200x200" %>
   <% end %></td>
 <!--機能・削除機能へのユーザー制限-->
 <%# if customer_signed_in? && current_customer.id == @booking.customer_id %>
