@@ -1,4 +1,7 @@
 # cancel matching
+
+[cancel matchingサイト画面](http://3.112.41.195/)<br>
+![トップ画面画面](images/top.png)
 ​
 ## サイト概要
 ### サイトテーマ
@@ -14,14 +17,19 @@
  - 予約キャンセルになってしまったお部屋を他のお客様に宿泊してほしいホテル業者
  - ホテルのレビューを知りたいお客様
 ​
-### 主な利用シーン
+### 主な利用シーンz
  - 直近で空室のホテルを探したい時
  - 直前割でお値打ち価格でホテルに宿泊したい時
  - 予約キャンセルになってしまったお部屋を他のお客様に宿泊してほしい時（ホテル業者側）
 ​
 ## 設計書
 
-後ほど作成予定
+![顧客側機能](images/public.png)<br>
+![管理者側機能](images/admin.png)
+
+## ER図
+
+![ER図詳細](images/er.png)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -33,3 +41,5 @@
 ## 使用素材
 - フリーイラスト素材として以下を使用
   - [Pexels](https://www.pexels.com/ja-jp/)
+  - [Adobe Stock](https://stock.adobe.com/jp/)
+  - [Unsplash](https://unsplash.com/ja)
