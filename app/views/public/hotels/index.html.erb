@@ -41,7 +41,7 @@
         <% if room.image.attached? %>
           <%= image_tag room.image, size: "100x100" %>
         <% else %>
-          <%= image_tag 'no_image', size: "100x100" %>
+          <%= image_tag 'no_image.jpg', size: "100x100" %>
         <% end %>
       </td>
       <td><%= link_to "詳細", hotel_path(room), class: "btn btn-outline-secondary" %> </td>
