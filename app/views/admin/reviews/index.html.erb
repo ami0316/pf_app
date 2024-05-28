@@ -3,7 +3,7 @@
       <h1>レビュー一覧</h1>
 
     <% current_admin.hotels.each do |hotel| %>
-    <h3>宿泊施設名：<%= hotel.hotel_name %></h3>
+    <!--<h3>宿泊施設名：<%#= hotel.hotel_name %></h3>-->
      <% hotel.comments.each do |comment| %>
       <div>
         <span class="mr-4"><%= comment.customer.first_name %></span>
