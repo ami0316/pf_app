@@ -1,7 +1,7 @@
 # cancel matching
 
 [cancel matchingサイト画面](http://3.112.41.195/)<br>
-![トップ画面画面](images/top.png)
+![トップ画面画面](assets/images/top.png)
 ​
 ## サイト概要
 ### サイトテーマ
