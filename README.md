@@ -1,7 +1,7 @@
 # cancel matching
 
 [cancel matchingサイト画面](http://3.112.41.195/)<br>
-![トップ画面画面](assets/images/top.png)
+![トップ画面画面](img/top.png)
 ​
 ## サイト概要
 ### サイトテーマ
@@ -24,12 +24,12 @@
 ​
 ## 設計書
 
-![顧客側機能](assets/images/public.png)<br>
-![管理者側機能](assets/images/admin.png)
+![顧客側機能](img/public.png)<br>
+![管理者側機能](img/admin.png)
 
 ## ER図
 
-![ER図詳細](assets/images/er.png)
+![ER図詳細](img/er.png)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
