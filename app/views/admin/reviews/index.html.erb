@@ -2,8 +2,9 @@
     <div class="col-sm-10 offset-3 col-md-10 offset-md-3 col-lg-12 offset-lg-3">
       <h1>レビュー一覧</h1>
 
-    <% @rooms.each do |room| %>
-     <% room.hotel.comments.each do |comment| %>
+    <% current_admin.hotels.each do |hotel| %>
+    <h3>宿泊施設名：<%= hotel.hotel_name %></h3>
+     <% hotel.comments.each do |comment| %>
       <div>
         <span class="mr-4"><%= comment.customer.first_name %></span>
         <span><%= l(comment.created_at, format: :long) %></span>
