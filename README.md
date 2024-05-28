@@ -24,12 +24,12 @@
 ​
 ## 設計書
 
-![顧客側機能](images/public.png)<br>
-![管理者側機能](images/admin.png)
+![顧客側機能](assets/images/public.png)<br>
+![管理者側機能](assets/images/admin.png)
 
 ## ER図
 
-![ER図詳細](images/er.png)
+![ER図詳細](assets/images/er.png)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
