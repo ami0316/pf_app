@@ -14,15 +14,25 @@
 <%= form_with model: @room, url: admin_booking_path(@room.id), method: :patch do |f| %>
   <h4>ホテル名</h4>
   <%= f.collection_select :hotel_id, Hotel.all, :id, :hotel_name, include_blank: "選択して下さい" %>
+  
+  <h4>予約日</h4>
+  <%= f.date_field :booking_date, class: "form-control" %>
 
   <h4>部屋名</h4>
   <%= f.text_field :room_name, class: "form-control" %>
 
   <h4>部屋詳細</h4>
-  <%= f.text_field :room_details, class: "form-control" %>
+  <%= f.text_area :room_details, class: "form-control" %>
 
-   <h4>金額</h4>
+  <h4>金額</h4>
   <%= f.text_field :price, class: "form-control" %>
+
+  <H4>部屋画像</H4>
+  <%= f.file_field :image, accept: "image/*" %>
+  
+   <h4>タグ</h4>
+  <%= f.text_field :tag, class: "form-control" %>
+
 
   <%= f.submit '更新',class: "btn btn-outline-secondary btn-lg btn-block mt-2" %>
 <% end %>

@@ -13,7 +13,6 @@ class Admin::HotelsController < ApplicationController
       flash[:notice] = '施設名を登録しました。'
       redirect_to admin_hotel_path(@hotel.id)
     else
-      flash[:notice] = '項目を入力してください。'
       render :new
     end
   end
@@ -30,6 +29,13 @@ class Admin::HotelsController < ApplicationController
     hotel = Hotel.find(params[:id])
     hotel.update(hotel_params)
     redirect_to admin_hotel_path(hotel.id)
+  end
+
+  def destroy
+    hotel = Hotel.find(params[:id])
+    hotel.destroy
+    flash[:notice] = "宿泊施設を削除しました。"
+    redirect_to admin_hotels_path
   end
 
  private

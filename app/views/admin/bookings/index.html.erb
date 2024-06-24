@@ -7,9 +7,10 @@
     <tr>
       <th>予約済</th>
       <th>宿泊施設名</th>
+      <th>予約日</th>
       <th>部屋詳細</th>
       <th>金額</th>
-      <th>画像</th>
+      <th>部屋画像</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,7 @@
      <tr>
         <td><%= room.is_view ? '<span class="text-danger">未決定</span>'.html_safe : '<span class="text-success">決定済</span>'.html_safe %></td>
         <td><%= room.hotel.hotel_name %></td>
+        <td><%= room.booking_date %></td>
         <td><%= room.room_details %></td>
         <td>&yen; <%= room.price.to_s(:delimited) %></td>
         <td><% if room.image.attached? %>

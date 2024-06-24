@@ -3,30 +3,33 @@
 <table class ="table">
   <thead>
     <tr>
-      <th>ホテル名</th>
+      <th>宿泊施設名</th>
+      <th>予約日</th>
       <th>部屋名</th>
       <th>部屋詳細</th>
       <th>金額</th>
+      <th>部屋画像</th>
+      <th>タグ</th>
     </tr>
   </thead>
   <tbody>
    <tr>
    <td><%= @room.hotel.hotel_name %></td>
+   <td><%= @room.booking_date %></td>
    <td><%= @room.room_name %></td>
    <td><%= @room.room_details %></td>
    <td>&yen; <%= @room.price.to_s(:delimited) %></td>
-   <!--<h2>お部屋のイメージ</h2>-->
-  <td><% if @room.image.attached? %>
+   <td><% if @room.image.attached? %>
     <%= image_tag @room.image, size: "200x200" %>
   <% else %>
     <%= image_tag 'no_image.jpg', size: "200x200" %>
-  <% end %></td>
-<!--機能・削除機能へのユーザー制限-->
-<%# if customer_signed_in? && current_customer.id == @booking.customer_id %>
-  <td><%= link_to "編集", edit_admin_booking_path(@room.id),class: "btn btn-outline-secondary" %></td>
-  <td><%= link_to "削除", admin_booking_path(@room.id),class: "btn btn-outline-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+  <% end %>
+   </td>
+   <td><%#= @room.tags %></td>
+   
+   <td><%= link_to "編集", edit_admin_booking_path(@room.id),class: "btn btn-outline-secondary" %></td>
+   <td><%= link_to "削除", admin_booking_path(@room.id),class: "btn btn-outline-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
   </tr>
-<%# end %>
   </tbody>
 </table>
     </div>

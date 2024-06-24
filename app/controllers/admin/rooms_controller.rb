@@ -16,7 +16,6 @@ class Admin::RoomsController < ApplicationController
        flash[:notice] = "投稿が完了しました。"
        redirect_to admin_bookings_path
      else
-       flash[:notice] = '項目を入力してください。'
        render :new
      end
   end

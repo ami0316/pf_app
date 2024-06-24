@@ -15,6 +15,17 @@ ja:
       admin:
         email: "メールアドレス"
         password: "パスワード"
+      hotel:
+        hotel_name: "宿泊施設名"
+        body: "詳細"
+        url: "ホームページ"
+        telephone_number: "電話番号"
+        address: "住所"
+      room:
+        hotel: "ホテル名"
+        room_name: "部屋名"
+        room_details: "部屋内容"
+        price: "部屋料金"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -1,8 +1,8 @@
-<h1>宿泊施設の詳細</h1>
-
+<div class="container">
 <div class="row">
   <div class="col-md-10 col-lg-4">
     <div class="mb-3">
+      <h1>宿泊施設の詳細</h1>
       <% if @room.image.attached? %>
         <%= image_tag @room.image, style: "width:100%;" %>
       <% else %>
@@ -102,4 +102,5 @@
   <div class="col-md-8" id="comments">
     <%= render partial: 'public/comments/comments', locals: {hotel: @hotel, comments: @comments} %>
   </div>
+</div>
 </div>
