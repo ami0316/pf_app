@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <h1>宿泊施設一覧</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>宿泊施設名</th>
+      <th>部屋詳細</th>
+      <th>サイト名</th>
+      <th>電話番号</th>
+      <th>住所</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hotels.each do |hotel| %>
+      <tr>
+        <td><%= hotel.hotel_name %></td>
+        <td><%= hotel.body %></td>
+        <td><%= hotel.url %></td>
+        <td><%= hotel.telephone_number %></td>
+        <td><%= hotel.address %></td>
+        <td><%= link_to "編集", edit_admin_hotel_path(hotel.id), class: "btn btn-outline-secondary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  </div>
+</div>

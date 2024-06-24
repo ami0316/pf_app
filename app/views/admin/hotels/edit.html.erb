@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <h1>宿泊施設編集画面</h1>
+    <%= form_with model: @hotel, url: admin_hotel_path(@hotel.id), method: :patch do |f| %>
+
+      <div class="form-group pt-2">
+      <h4>宿泊施設名</h4>
+      <%= f.text_field :hotel_name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <h4>部屋詳細</h4>
+      <%= f.text_field :body, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <h4>サイト名</h4>
+      <%= f.text_field :url, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <h4>電話番号</h4>
+      <%= f.text_field :telephone_number, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <h4>住所</h4>
+      <%= f.text_field :address, class: "form-control" %>
+      </div>
+
+      <%= f.submit "保存", class: "btn btn-outline-secondary mt-2" %>
+    <% end %>
+    </div>
+  </div>
+</div>

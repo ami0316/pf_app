@@ -3,20 +3,41 @@
 <h1>宿泊施設登録</h1>
 
 <%= form_with model: @hotel, url: admin_hotels_path do |f| %>
-  <h4>宿泊施設名</h4>
-  <%= f.text_field :hotel_name, class: "form-control" %>
+  <div class="form-group">
+    <h4>宿泊施設名</h4>
+    <%= f.text_field :hotel_name, class: "form-control" %>
+  </div>
 
-  <h4>詳細</h4>
-  <%= f.text_field :body, class: "form-control" %>
+  <div class="form-group">
+    <h4>詳細</h4>
+    <%= f.text_field :body, class: "form-control" %>
+  </div>
 
-  <h4>ホームページ</h4>
-  <%= f.text_field :url, class: "form-control" %>
+  <div class="form-group">
+    <h4>ホームページ</h4>
+    <%= f.text_field :url, class: "form-control" %>
+  </div>
 
-  <h4>電話番号</h4>
-  <%= f.text_field :telephone_number, class: "form-control" %>
+  <div class="form-group">
+    <h4>電話番号</h4>
+    <%= f.text_field :telephone_number, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <h4>郵便番号</h4>
+    <%= text_field_tag :zipcode, nil, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <h4>住所</h4>
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
 
   <%= f.submit '登録', class: "btn btn-outline-secondary btn-lg btn-block mt-2" %>
   <% end %>
 
    </div>
 </div>
+
+<!--Javascriptを読み込む処理-->
+<%= javascript_pack_tag "jpostal",  'data-turbolinks-track': 'reload' %>

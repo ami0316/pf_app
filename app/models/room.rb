@@ -1,4 +1,6 @@
 class Room < ApplicationRecord
+  extend OrderAsSpecified
+
   belongs_to :hotel
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships
@@ -9,19 +11,22 @@ class Room < ApplicationRecord
    # ActiveStorageの設定
   has_one_attached :image
 
-
   validates :room_name, presence: true
   validates :room_details, presence: true
   validates :price, presence: true
 
+  #ソート機能
+  scope :by_booking_date, -> { order(booking_date: :asc) }
+  scope :by_price, -> { order(price: :asc) }
+
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
-      rooms = Room.where("room_name LIKE?", "#{word}")
+      Room.where("room_name LIKE?", "#{word}")
     elsif search == "partial_match"
-      rooms = Room.where("room_name LIKE?","%#{word}%")
+      Room.where("room_name LIKE?","%#{word}%")
     else
-      rooms = Room.all
+      Room.all
     end
   end
 

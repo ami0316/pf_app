@@ -80,6 +80,7 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.2.3)
     crass (1.0.6)
+    csv (3.3.0)
     date (3.3.4)
     devise (4.9.4)
       bcrypt (~> 3.0)
@@ -95,6 +96,9 @@ GEM
     ffi (1.16.3)
     font-awesome-sass (6.5.2)
       sassc (~> 2.0)
+    geocoder (1.8.3)
+      base64 (>= 0.1.0)
+      csv (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.4)
@@ -148,6 +152,8 @@ GEM
     nio4r (2.7.1)
     nokogiri (1.16.4-x86_64-linux)
       racc (~> 1.4)
+    order_as_specified (1.7)
+      activerecord (>= 5.0.0)
     orm_adapter (0.5.0)
     public_suffix (5.0.5)
     puma (3.12.6)
@@ -264,6 +270,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass
+  geocoder
   jbuilder (~> 2.7)
   jquery-rails
   kaminari (~> 1.2.1)
@@ -272,6 +279,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
+  order_as_specified
   puma (~> 3.11)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7, >= 6.1.7.7)

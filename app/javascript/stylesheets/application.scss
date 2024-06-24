@@ -1,4 +1,4 @@
-// bootstrap追加記述
+// スタイルのプロパティ指定
  $theme-colors: (
      "primary": #000,
     //  "secondary": #A242E6,
@@ -7,6 +7,7 @@
 //     "danger": #000,
  );
 
+// 丸め込みレイアウトを無効
 $enable-rounded: false;
 
 @import '~bootstrap/scss/bootstrap';
@@ -18,6 +19,7 @@ body {
     padding-top: 73px;
 }
 
+// 要素が重なる時に使用
 header {
     top: 0;
     left: 0;
@@ -49,6 +51,7 @@ header {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
+// 輝度、ぼかし機能
 .top-mv__filter {
     backdrop-filter: brightness(150%) blur(20px);
     z-index: 9999;
@@ -76,6 +79,7 @@ footer {
     background-color: #fff;
 }
 
+// テキストの行の高さを通常の2倍にし、テキストのフォントサイズはビューポート幅の割合に応じて可変となるように設定
 footer ul {
     line-height: 2;
     font-size: calc(10px + .3vw);

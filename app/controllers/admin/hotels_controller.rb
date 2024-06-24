@@ -18,11 +18,23 @@ class Admin::HotelsController < ApplicationController
     end
   end
 
+  def index
+    @hotels = Hotel.all
+  end
 
+  def edit
+    @hotel = Hotel.find(params[:id])
+  end
+
+  def update
+    hotel = Hotel.find(params[:id])
+    hotel.update(hotel_params)
+    redirect_to admin_hotel_path(hotel.id)
+  end
 
  private
 
   def hotel_params
-  params.require(:hotel).permit(:hotel_name, :body, :url, :telephone_number).merge(admin_id: current_admin.id)
+  params.require(:hotel).permit(:hotel_name, :body, :url, :telephone_number, :address).merge(admin_id: current_admin.id)
   end
 end

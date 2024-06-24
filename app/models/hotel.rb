@@ -7,6 +7,10 @@ class Hotel < ApplicationRecord
   validates :body, presence: true
   validates :url, presence: true
   validates :telephone_number, presence: true
+  validates :address, presence: true
+
+  geocoded_by :address #addressカラムの内容を緯度・経度に変換すること
+  after_validation :geocode #バリデーションの実行後に変換処理を実行して、latitudeカラム・longitudeカラムに緯度・経度の値が入力される
 
    # 検索方法分岐
   def self.looks(search, word)

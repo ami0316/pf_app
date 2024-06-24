@@ -33,9 +33,10 @@
 
               <% elsif admin_signed_in? %>
                   <li class="nav-item"><%= link_to '投稿一覧', admin_bookings_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to '宿泊施設一覧', admin_hotels_path, class: "nav-link" %></li>
                   <li class="nav-item"><%= link_to '会員一覧', admin_customers_path, class: "nav-link" %></li>
                   <li class="nav-item"><%= link_to 'レビュー一覧', admin_reviews_path, class: "nav-link" %></li>
-                  <li class="nav-item"><%= link_to '宿泊施設登録', new_admin_hotel_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to '宿泊施設登録', new_admin_hotel_path, class: "nav-link", data: {"turbolinks" => false} %></li>
                   <li class="nav-item"><%= link_to '部屋登録', new_admin_room_path, class: "nav-link" %></li>
                   <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
 
@@ -82,8 +83,6 @@
           </small>
         </div>
       </footer>
+      <script src="https://cdn.jsdelivr.net/npm/jquery-jpostal-ja@2.14.45/jquery.jpostal.min.js"></script>
   </body>
-  <style>
-
-  </style>
 </html>

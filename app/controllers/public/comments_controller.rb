@@ -1,13 +1,13 @@
 class Public::CommentsController < ApplicationController
-  def index
-  end
+  before_action :find_hotel, only: [:create, :destroy]
+  
+  def index; end
 
-  def edit
-  end
+  def edit; end
 
   def create
-    @hotel = Hotel.find(params[:hotel_id])
-    @comments = @hotel.comments.order(created_at: :desc)
+    # @hotel = Hotel.find(params[:hotel_id])
+    # @comments = @hotel.comments.order(created_at: :desc)
     @comment = current_customer.comments.new(comment_params)
     @comment.hotel_id = @hotel.id # ホテルIDを指定する必要がある場合
     @comment.save
@@ -15,8 +15,8 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    @hotel = Hotel.find(params[:hotel_id])
-    @comments = @hotel.comments.order(created_at: :desc)
+    # @hotel = Hotel.find(params[:hotel_id])
+    # @comments = @hotel.comments.order(created_at: :desc)
     @comment = Comment.find(params[:id])
     @comment.destroy
     # redirect_to request.referer
@@ -27,5 +27,10 @@ class Public::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment, :star)
+  end
+
+  def find_hotel
+    @hotel = Hotel.find(params[:hotel_id])
+    @comments = @hotel.comments.order(created_at: :desc)
   end
 end

@@ -74,3 +74,9 @@ gem 'kaminari','~> 1.2.1'
 
 # 非同期追加
 gem 'jquery-rails'
+
+#位置情報を扱うためのGem
+gem 'geocoder'
+
+# 並び順を指定して取得するためのGem
+gem 'order_as_specified'

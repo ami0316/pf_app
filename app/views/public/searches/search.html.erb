@@ -8,10 +8,10 @@
       <tbody>
         <% @hotels.each do |hotel| %>
           <tr>
-            <p>ホテル名：<span><%= hotel.hotel_name %></span></p>
+            <p>ホテル名：<%= link_to hotel.hotel_name, hotels_path(hotel_id: hotel.id) %></p>
              <% hotel.rooms.is_view.each do |room| %>
               <p>部屋名：<span><%= room.room_name %></span></p>
-              <p>部屋詳細：<span><%= room.room_details %></span></p>
+              <p>部屋詳細：<span><%= link_to room.room_details, hotel_path(room) %> </span></p>
               <p>金額：<span><%= room.price %></span></p>
               <p>お部屋のイメージ</p>
               <% if room.image.attached? %>
@@ -32,7 +32,7 @@
       <tbody>
         <% @rooms.each do |room| %>
           <tr>
-            <p>ホテル名：<span><%= room.hotel.hotel_name %></span></p>
+            <p>ホテル名：<%= link_to room.hotel.hotel_name, hotels_path(hotel_id: room.hotel) %></p>
             <p>部屋名：<span><%= room.room_name %></span></p>
             <p>部屋詳細：<span><%= room.room_details %></span></p>
             <p>金額：<span><%= room.price %></span></p>

@@ -1,6 +1,20 @@
 ---
 ja:
   activerecord:
+    models:
+      customer: "顧客情報"
+      admin: "管理者情報"
+    attributes:
+      customer:
+        email: "メールアドレス"
+        first_name: "名前(性)"
+        last_name: "名前（名）"
+        first_name_kana: "フリガナ（セイ）"
+        last_name_kana: "フリガナ（メイ）"
+        password: "パスワード"
+      admin:
+        email: "メールアドレス"
+        password: "パスワード"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -17,7 +31,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -43,7 +57,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -110,6 +124,9 @@ ja:
       too_long: は%{count}文字以内で入力してください
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
+      not_saved:
+        one: "%{resource}の保存に失敗しました。: 1つのエラーが発生しました"
+        other: "%{resource} の保存に失敗しました。: %{count}つのエラーが発生しました"
     template:
       body: 次の項目を確認してください
       header: "%{model}に%{count}個のエラーが発生しました"
