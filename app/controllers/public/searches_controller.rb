@@ -8,7 +8,7 @@ class Public::SearchesController < ApplicationController
     if @range == "宿泊施設名"
       @hotels = Hotel.looks(params[:search], params[:word])
     else
-      @rooms = Room.is_view.looks(params[:search], params[:word])
+      @rooms = Room.is_view.looks(params[:search], params[:word], params[:range])
     end
   end
 end

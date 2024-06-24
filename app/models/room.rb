@@ -20,11 +20,23 @@ class Room < ApplicationRecord
   scope :by_price, -> { order(price: :asc) }
 
   # 検索方法分岐
-  def self.looks(search, word)
+  def self.looks(search, word, range)
     if search == "perfect_match"
-      Room.where("room_name LIKE?", "#{word}")
+      if range == "部屋名"
+        Room.where("room_name LIKE?", "#{word}")
+      elsif range == "金額"  
+        Room.where("price LIKE?", "#{word}")
+      else
+        Room.where("booking_date LIKE?","#{word}")
+      end  
     elsif search == "partial_match"
-      Room.where("room_name LIKE?","%#{word}%")
+      if range == "部屋名"
+        Room.where("room_name LIKE?", "%#{word}%")
+      elsif range == "金額"  
+        Room.where("price LIKE?", "%#{word}%")
+      else
+        Room.where("booking_date LIKE?","%#{word}%")
+      end  
     else
       Room.all
     end
