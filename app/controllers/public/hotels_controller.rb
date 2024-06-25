@@ -10,7 +10,7 @@ class Public::HotelsController < ApplicationController
       elsif params[:by_price]
         @rooms = Room.is_view.by_price.page(params[:page])
       elsif params[:star_count]
-        latest_star_ids = Comment.where(hotel_id: Hotel.ids).group(:hotel_id).order('count(star) desc').pluck(:hotel_id)
+        latest_star_ids = Comment.where(hotel_id: Hotel.ids).group(:hotel_id).order("count(star) desc").pluck(:hotel_id)
         @rooms = Room.is_view.order_as_specified(hotel_id: latest_star_ids).page(params[:page])
       else
         @rooms = Room.is_view.page(params[:page])
@@ -25,5 +25,4 @@ class Public::HotelsController < ApplicationController
     @hotel = Hotel.find(@room.hotel.id)
     @comments = @hotel.comments.order(created_at: :desc)
   end
-
 end

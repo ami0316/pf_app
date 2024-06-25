@@ -21,5 +21,4 @@ class Customer < ApplicationRecord
       customer.password = SecureRandom.urlsafe_base64
     end
   end
-
 end

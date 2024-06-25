@@ -1,6 +1,6 @@
 class Public::CommentsController < ApplicationController
   before_action :find_hotel, only: [:create, :destroy]
-  
+
   def index; end
 
   def edit; end
@@ -24,13 +24,12 @@ class Public::CommentsController < ApplicationController
 
 
   private
+    def comment_params
+      params.require(:comment).permit(:comment, :star)
+    end
 
-  def comment_params
-    params.require(:comment).permit(:comment, :star)
-  end
-
-  def find_hotel
-    @hotel = Hotel.find(params[:hotel_id])
-    @comments = @hotel.comments.order(created_at: :desc)
-  end
+    def find_hotel
+      @hotel = Hotel.find(params[:hotel_id])
+      @comments = @hotel.comments.order(created_at: :desc)
+    end
 end
