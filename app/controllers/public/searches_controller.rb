@@ -5,8 +5,16 @@ class Public::SearchesController < ApplicationController
     @word = params[:word]
     @range = params[:range]
 
-    if @range == "宿泊施設名"
+    if @range == "hotel"
       @hotels = Hotel.looks(params[:search], params[:word])
+    elsif @range == "price"
+      if params[:price] == "up"
+        @rooms = Room.is_view.where("price >= ?", params[:word].tr('０-９','0-9'))
+      else
+        @rooms = Room.is_view.where("price <= ?", params[:word].tr('０-９','0-9'))
+      end
+    elsif @range == "booking"
+      @rooms = Room.is_view.where(booking_date: params[:word])
     else
       @rooms = Room.is_view.looks(params[:search], params[:word], params[:range])
     end

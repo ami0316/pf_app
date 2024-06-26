@@ -26,6 +26,8 @@ ja:
         room_name: "部屋名"
         room_details: "部屋内容"
         price: "部屋料金"
+        booking_date: "予約日"
+        image: "部屋画像"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -25,8 +25,12 @@
     <%= image_tag 'no_image.jpg', size: "200x200" %>
   <% end %>
    </td>
-   <td><%#= @room.tags %></td>
-   
+   <td>
+     <% @room.tags.each do |tag| %>
+       <span class="badge badge-secondary mr-2"><%= tag.name %></span>
+     <% end %>
+   </td>
+
    <td><%= link_to "編集", edit_admin_booking_path(@room.id),class: "btn btn-outline-secondary" %></td>
    <td><%= link_to "削除", admin_booking_path(@room.id),class: "btn btn-outline-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
   </tr>

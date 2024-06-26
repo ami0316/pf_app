@@ -14,6 +14,8 @@ class Room < ApplicationRecord
   validates :room_name, presence: true
   validates :room_details, presence: true
   validates :price, presence: true
+  validates :booking_date, presence: true
+  validates :image, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
 
   #ソート機能
   scope :by_booking_date, -> { order(booking_date: :asc) }
@@ -24,19 +26,19 @@ class Room < ApplicationRecord
     if search == "perfect_match"
       if range == "部屋名"
         Room.where("room_name LIKE?", "#{word}")
-      elsif range == "金額"  
+      elsif range == "金額"
         Room.where("price LIKE?", "#{word}")
       else
         Room.where("booking_date LIKE?","#{word}")
-      end  
+      end
     elsif search == "partial_match"
       if range == "部屋名"
         Room.where("room_name LIKE?", "%#{word}%")
-      elsif range == "金額"  
+      elsif range == "金額"
         Room.where("price LIKE?", "%#{word}%")
       else
         Room.where("booking_date LIKE?","%#{word}%")
-      end  
+      end
     else
       Room.all
     end

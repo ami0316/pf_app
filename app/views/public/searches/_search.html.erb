@@ -1,10 +1,57 @@
 <% if customer_signed_in? %>
-<div class="search_form">
-  <%= form_with url: search_path, local: true, method: :get do |f| %>
+  <div class="search_form" data-turbolinks="false">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
       <%= f.text_field :word %>
-      <%= f.select :range, options_for_select([['宿泊施設名'], ['部屋名'],["金額"],["空室日"]]) %>
+      <%= f.select :range, options_for_select([['宿泊施設名', 'hotel'], ['部屋名', 'room'],["金額", 'price'],["空室日", 'booking']]) %>
       <%= f.select :search, options_for_select([["完全一致","perfect_match"],  ["部分一致","partial_match"]]) %>
+      <%= f.select :price, options_for_select([["以上","up"],  ["以下","down"]]) %>
       <%= f.submit "検索", class: "btn btn-outline-info btn-sm" %>
     <% end %>
   </div>
+
+  <script>
+    $(document).on('change turbolinks:load', function(){
+
+      var searchUrl = sessionStorage.getItem('url');
+      if (searchUrl !== null) {
+        var url = new URL(searchUrl);  // URLを取得
+        var params = url.searchParams; // URLSearchParamsオブジェクトを取得
+        changeSearchBox(params.get('range'));
+      } else {
+        changeSearchBox();
+      }
+    })
+
+    function changeSearchBox(params) {
+      if (params === undefined) {
+        var val = $('[name=range]').val(); // セレクトボックスの値取得
+      } else {
+        var val = params;
+      }
+
+      // 検索条件が、ホテル名または部屋名の場合
+      if (val === 'hotel' || val === 'room') {
+        $('#search').show();
+      } else {
+        $('#search').hide();
+      }
+
+      // 検索条件が金額の場合
+      if (val === 'price') {
+        $('#price').show();
+      } else {
+        $('#price').hide();
+      }
+
+      // 検索条件が日付の場合
+      if (val === 'booking') {
+        $('#word').attr('type', 'date');
+      } else {
+        $('#word').attr('type', 'text');
+      }
+
+      sessionStorage.removeItem('url');
+    }
+  </script>
+
 <% end %>

@@ -88,3 +88,6 @@ gem "geocoder"
 
 # 並び順を指定して取得するためのGem
 gem "order_as_specified"
+
+# ActiveStorageのバリデーションGem
+gem 'activestorage-validator'
