@@ -77,7 +77,7 @@
 
 <script>
   // Swiperを実行(初期化)
-  $(document).on('turbolinks:load', function() {
+  $(document).ready(function() {
       new Swiper('.main-visual', {
         loop: true,
         autoplay: {
@@ -87,10 +87,11 @@
   });
 
     // Swiperを実行(初期化)
-  $(document).on('turbolinks:load', function() {
+  $(document).ready(function() {
       var newRooms = new Swiper('.new-rooms', {
         loop: true,
-        speed: 70000,
+        allowTouchMove: false,
+        speed: 7000,
         autoplay: {
           delay: 0,
         },

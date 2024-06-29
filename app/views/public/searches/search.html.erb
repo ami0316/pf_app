@@ -54,7 +54,7 @@
 
 <script>
   // ブラウザバック直前の遷移元のurlを取得
-  $(document).on('turbolinks:load', function(){
+  $(document).ready(function(){
     sessionStorage.setItem('url', window.location.href);
   })
 </script>

@@ -10,8 +10,18 @@
   </div>
 
   <script>
-    $(document).on('change turbolinks:load', function(){
+    $(document).ready(function(){
+      var searchUrl = sessionStorage.getItem('url');
+      if (searchUrl !== null) {
+        var url = new URL(searchUrl);  // URLを取得
+        var params = url.searchParams; // URLSearchParamsオブジェクトを取得
+        changeSearchBox(params.get('range'));
+      } else {
+        changeSearchBox();
+      }
+    })
 
+    $(document).on('change', function() {
       var searchUrl = sessionStorage.getItem('url');
       if (searchUrl !== null) {
         var url = new URL(searchUrl);  // URLを取得

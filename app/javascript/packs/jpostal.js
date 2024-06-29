@@ -6,4 +6,4 @@ function jpostal() {
     }
   });
 }
-$(document).on("turbolinks:load", jpostal);
+$(document).ready(jpostal);
