@@ -11,6 +11,7 @@ class Public::CommentsController < ApplicationController
     @comment = current_customer.comments.new(comment_params)
     @comment.hotel_id = @hotel.id # ホテルIDを指定する必要がある場合
     @comment.save
+    @comments = @hotel.comments.order(created_at: :desc)
     # redirect_to request.referer
   end
 
@@ -19,6 +20,7 @@ class Public::CommentsController < ApplicationController
     # @comments = @hotel.comments.order(created_at: :desc)
     @comment = Comment.find(params[:id])
     @comment.destroy
+    @comments = @hotel.comments.order(created_at: :desc)
     # redirect_to request.referer
   end
 
