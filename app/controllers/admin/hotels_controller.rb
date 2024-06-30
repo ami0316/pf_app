@@ -1,4 +1,6 @@
 class Admin::HotelsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def show
     @hotel = Hotel.find(params[:id])
   end
