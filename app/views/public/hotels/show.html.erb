@@ -77,24 +77,28 @@
   <div class="col-md-4">
     <h4>コメント、レビューを残す</h4>
     <div class="mb-4">
-      <%= form_with model: [@hotel, @comment], url: hotel_comments_path(@hotel), local: false do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control mb-2" %>
-         <div class="form-group row" id="star">
-          <%= f.label :star,'評価 ', class: 'col-md-3 col-form-label' %>
-          <div id="star"></div>
-         </div>
-      <!-- 評価javascript -->
-      <script>
+      <% if customer_signed_in? %>
+        <%= form_with model: [@hotel, @comment], url: hotel_comments_path(@hotel), local: false do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control mb-2" %>
+           <div class="form-group row" id="star">
+            <%= f.label :star,'評価 ', class: 'col-md-3 col-form-label' %>
+            <div id="star"></div>
+           </div>
+        <!-- 評価javascript -->
+        <script>
 
-        $('#star').raty({
-          starOff:  '<%= asset_path('star-off.png') %>',
-          starOn : '<%= asset_path('star-on.png') %>',
+          $('#star').raty({
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
 
-          scoreName: 'comment[star]',
-          half: false,
-        });
-      </script>
-        <%= f.submit "入力する", class: "btn btn-outline-secondary btn-block" %>
+            scoreName: 'comment[star]',
+            half: false,
+          });
+        </script>
+          <%= f.submit "入力する", class: "btn btn-outline-secondary btn-block" %>
+        <% end %>
+      <% else %>
+      コメントするには、サインインが必要です。
       <% end %>
     </div>
   </div>

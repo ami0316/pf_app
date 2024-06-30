@@ -1,5 +1,6 @@
 class Public::CommentsController < ApplicationController
   before_action :find_hotel, only: [:create, :destroy]
+  before_action :authenticate_customer!
 
   def index; end
 
