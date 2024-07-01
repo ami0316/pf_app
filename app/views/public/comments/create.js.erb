@@ -1,3 +1,5 @@
 $('#comments').html('<%= j(render partial: 'public/comments/comments', locals: {hotel: @hotel, comments: @comments}) %>')
+<!--コメント入力欄の内容を投稿後に再度表示されないようにする-->
 $('#comment_comment').val('')
+<!--星の評価を投稿後に再度表示されないようにする-->
 $('#star').raty('cancel');

@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
     resources :customers
     resources :hotels
-    resources :bookings
+    resources :bookings, only: [:create, :new]
     # コメント機能のネスト部分
     resources :hotels do
       resources :comments, only: [:create, :destroy]

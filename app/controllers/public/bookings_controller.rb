@@ -1,7 +1,7 @@
 class Public::BookingsController < ApplicationController
   before_action :get_room, only: [:new, :confirm]
-  before_action :ensure_guest_customer, only: [:new]
-  before_action :authenticate_customer!, only: [:new, :confirm]
+  before_action :ensure_guest_customer 
+  before_action :authenticate_customer! 
 
   def confirm
     @number_of_people = params[:number_of_people]
@@ -21,26 +21,27 @@ class Public::BookingsController < ApplicationController
     redirect_to bookings_thanks_path
   end
 
-  def show
-    @booking = Booking.find(params[:id])
-    @comment = Comment.new
-    # コメント用のコード
-    @booking_comments = @booking.comments
+  # def show
+    # redirect_to root_path, notice: '予期せぬ操作が行われました' and return if params[:id] == 'confirm'
+    # @booking = Booking.find(params[:id])
+    # @comment = Comment.new
+    # # コメント用のコード
+    # @booking_comments = @booking.comments
 
-    # タグ用のコード
-    @tags = @booking.tags.pluck(:name).join(",")
+    # # タグ用のコード
+    # @tags = @booking.tags.pluck(:name).join(",")
 
-    # 閲覧数表示
-    impressionist(@booking, nil, unique: ["session_hash"])
-  end
+    # # 閲覧数表示
+    # impressionist(@booking, nil, unique: ["session_hash"])
+  # end
 
-  def edit; end
+  # def edit; end
 
-  def update; end
+  # def update; end
 
   def thanks; end
 
-  def index; end
+  # def index; end
 
   def new; end
 
