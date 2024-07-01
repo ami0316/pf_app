@@ -77,6 +77,7 @@
   <div class="col-md-4">
     <h4>コメント、レビューを残す</h4>
     <div class="mb-4">
+      <!--会員かゲストユーザーがログインしている場合-->
       <% if customer_signed_in? && current_customer.email != 'guest@example.com' %>
         <%= form_with model: [@hotel, @comment], url: hotel_comments_path(@hotel), local: false do |f| %>
           <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control mb-2" %>
